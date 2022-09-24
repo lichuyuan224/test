@@ -1,7 +1,7 @@
 <template>
     <a-card :bordered="false">
 
-      <div class="table-operator">
+      <div class="table-operator" v-if='!createRight'>
         <a-button type="primary" icon="plus" @click="handleAdd">新建</a-button>
         <a-button  icon="edit" :disabled='selectedRowKeys.length === 0'>编辑</a-button>
         <a-button  icon="delete" :disabled='selectedRowKeys.length === 0'>删除</a-button>
@@ -29,6 +29,9 @@
           </a-col>
           <a-col :span="4">
             <a-input  placeholder="搜索..." allow-clear  style="width: 250px"/>
+          </a-col>
+          <a-col :span="2" :offset="6" v-if='createRight'>
+              <a-button type="primary" @click="handleAdd">快速创建</a-button>
           </a-col>
         </a-row>
 
@@ -112,6 +115,7 @@ export default {
       // create model
       visible: false,
       confirmLoading: false,
+      createRight: false,
       mdl: null,
       // 高级搜索 展开/关闭
       advanced: false,
@@ -259,6 +263,7 @@ export default {
     }
   },
   mounted() {
+    this.createRight = this.$route.path === '/dispatch';
     if (this.$route.path === '/operations/basic-list') {
       // this.columns.push({
       //   title: '测试',

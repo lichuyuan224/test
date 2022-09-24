@@ -385,7 +385,7 @@ export const asyncRouterMap = [
             path: '/om/basic-list2',
             name: 'om2',
             component: () => import('@/views/list/TableList'),
-            meta: { title: '私有云',}
+            meta: { title: '云产品',}
           },
         ]
       },

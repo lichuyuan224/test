@@ -139,6 +139,7 @@ export default {
     }
   },
   created () {
+
     const routes = asyncRouterMap.find(item => item.path === '/')
     this.menus = ((routes && routes.children) || []).filter(c => ['productapproval',
       'operateBigScreen',
