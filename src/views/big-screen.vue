@@ -1,6 +1,6 @@
 <template>
-  <div class="big-screen">
-    <img :src="imgUrl">
+  <div class='big-screen' style='width: 100%;'>
+    <img style='width: inherit' :src='imgUrl'>
   </div>
 </template>
 <script>
@@ -13,17 +13,12 @@ export default {
       imgUrl: yunyinBigscreen
     }
   },
-  watch: {
-    $route (e, t) {
-      const routerPathMap = {
+  mounted () {
+    const routerPathMap = {
         '/operateCenter/bigScreen': yunyinBigscreen,
         '/devopsCenter/bigScreen': yunweiBigscreen
       }
-      this.imgUrl = routerPathMap[e.path]
-      console.log(e.path, this.imgUrl)
-    }
-  },
-  mounted () {
+      this.imgUrl = routerPathMap[this.$route.path]
   },
   methods: {}
 }
