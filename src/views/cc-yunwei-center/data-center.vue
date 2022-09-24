@@ -1,47 +1,47 @@
 <template>
-  <div class="flex card-list">
-    <div class="left-bar">
+  <div class='flex card-list'>
+    <div class='left-bar'>
       <a-list
         rowKey="id"
         :grid="{gutter: 24, lg: 1, md: 1, sm: 1, xs: 1}"
         :dataSource="dataSource"
         class="card-list"
       >
-        <a-list-item slot="renderItem" slot-scope="item" @click="select(item)">
+        <a-list-item slot="renderItem" slot-scope="item" @click='select(item)'>
 
-          <a-card :hoverable="true" :class="{&quot;cc-selected&quot;: item.selected}">
-            <a-card-meta>
-              <a slot="title">{{ item.title }}</a>
-              <div class="cc-card" slot="description"><span><a-icon type="environment"/> 具体地址</span></div>
+          <a-card :hoverable="true" :class='{"cc-selected": item.selected}'>
+              <a-card-meta>
+                <a slot="title">{{ item.title }}</a>
+                <div class="cc-card" slot="description"><span><a-icon type="environment"/> 具体地址</span></div>
 
-              <div class="cc-card" style="display: block" slot="description">
-                <div class="mrg-bottom drop-down-show" v-for="(num, index) in item.number">
-                  <img :src="ccIconPer" alt="icon">
-                  <span v-if="index === &quot;room&quot;">
-                    <span class="label"> 机房数量</span>
-                    <span class="number-color">{{ num }}</span>
-                  </span>
-                  <span v-if="index === &quot;box&quot;">
-                    <span class="label"> 机柜数量</span>
-                    <span class="number-color">{{ num }}</span>
-                  </span>
-                  <span v-if="index === &quot;vm&quot;">
-                    <span class="label"> 物理机数量</span>
-                    <span class="number-color">{{ num }}</span>
-                  </span>
-                  <span v-if="index === &quot;switch&quot;">
-                    <span class="label"> 交换机数量</span>
-                    <span class="number-color">{{ num }}</span>
-                  </span>
+                <div class='cc-card' style='display: block' slot="description">
+                  <div class='mrg-bottom drop-down-show' v-for="(num, index) in item.number">
+                      <img :src='ccIconPer'>
+                      <span v-if='index === "room"'>
+                        <span class='label'> 机房数量</span>
+                        <span class='number-color'>{{num}}</span>
+                      </span>
+                      <span v-if='index === "box"'>
+                        <span class='label'> 机柜数量</span>
+                        <span class='number-color'>{{num}}</span>
+                      </span>
+                      <span v-if='index === "vm"'>
+                        <span class='label'> 物理机数量</span>
+                        <span class='number-color'>{{num}}</span>
+                      </span>
+                      <span v-if='index === "switch"'>
+                        <span class='label'> 交换机数量</span>
+                        <span class='number-color'>{{num}}</span>
+                      </span>
+                    </div>
                 </div>
-              </div>
-            </a-card-meta>
-          </a-card>
+              </a-card-meta>
+            </a-card>
 
         </a-list-item>
       </a-list>
     </div>
-    <div class="right-content">
+    <div class='right-content'>
       <a-list
         rowKey="id"
         :grid="{gutter: 24, lg: 2, md: 2, sm: 1, xs: 1}"
@@ -50,18 +50,18 @@
       >
         <a-list-item slot="renderItem" slot-scope="item">
           <a-card :hoverable="true">
-            <a-card-meta>
-              <a slot="title">{{ item.title }}</a>
-              <div class="meta-content" slot="description">{{ item.des }}</div>
-              <div class="cc-card mrg0B" slot="description">
-                <div class="flex-1" v-for="(powerInfo, index) in item.power">
-                  <span v-if="index === &quot;all&quot;">总算力：{{ powerInfo }}</span>
-                  <span v-if="index === &quot;on&quot;">已售算力：{{ powerInfo }}</span>
-                  <span v-if="index === &quot;off&quot;">剩余算力：{{ powerInfo }}</span>
+              <a-card-meta>
+                <a slot="title">{{ item.title }}</a>
+                <div class="meta-content" slot="description">{{ item.des }}</div>
+                <div class='cc-card mrg0B' slot="description">
+                  <div class='flex-1' v-for="(powerInfo, index) in item.power">
+                    <span v-if='index === "all"'>总算力：{{powerInfo}}</span>
+                    <span v-if='index === "on"'>已售算力：{{powerInfo}}</span>
+                    <span v-if='index === "off"'>剩余算力：{{powerInfo}}</span>
+                  </div>
                 </div>
-              </div>
-            </a-card-meta>
-          </a-card>
+              </a-card-meta>
+            </a-card>
         </a-list-item>
       </a-list>
     </div>
@@ -70,12 +70,13 @@
 </template>
 <script>
 import { ccIconPer } from '@/core/icons'
+
 const dataSource = [
   {
     id: 1,
     title: '和林格尔数据中心1',
     selected: false,
-    number: {room: 2000, box: 23020, vm: 1027010, switch: 6012},
+    number: {room: 20, box: 230, vm: 10270, switch: 60},
     bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
       {title: '高性能计算资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
       {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
@@ -84,7 +85,7 @@ const dataSource = [
     id: 2,
     title: '和林格尔数据中心2',
     selected: false,
-    number: {room: 500, box: 300, vm: 21750, switch: 450},
+    number: {room: 50, box: 300, vm: 21750, switch: 450},
     bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
       {title: '高性能计算资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
       {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
@@ -94,7 +95,7 @@ const dataSource = [
     id: 3,
     title: '阿里云数据中心',
     selected: false,
-    number: {room: 280, box: 108, vm: 102356, switch: 300},
+    number: {room: 30, box: 108, vm: 102356, switch: 300},
     bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
       {title: '阿里云资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
       {title: '阿里云资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
@@ -115,6 +116,7 @@ export default {
   data () {
     return {
       dataSource,
+      ccIconPer,
       selectData: dataSource[0]
     }
   },
@@ -122,8 +124,8 @@ export default {
     select (item) {
       dataSource.forEach(d => {
         d.selected = d.id === item.id
-      })
-      this.selectData = item
+      });
+      this.selectData = item;
     }
   }
 }
