@@ -13,325 +13,662 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/operations/basic-list',
     children: [
-      // dashboard
       {
-        path: '/dashboard',
-        name: 'dashboard',
-        redirect: '/dashboard/workplace',
+        path: '/operations',
+        name: 'operations',
         component: RouteView,
-        meta: { title: 'menu.dashboard', keepAlive: true, icon: bxAnaalyse, permission: ['dashboard'] },
+        redirect: '/operations/basic-list',
+        meta: { title: '超算供应商', icon: 'table', permission: ['table'] },
         children: [
           {
-            path: '/dashboard/analysis/:pageNo([1-9]\\d*)?',
-            name: 'Analysis',
-            component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: 'menu.dashboard.analysis', keepAlive: false, permission: ['dashboard'] }
-          },
-          // 外部链接
-          // {
-          //   path: 'https://www.baidu.com/',
-          //   name: 'Monitor',
-          //   meta: { title: 'menu.dashboard.monitor', target: '_blank' }
-          // },
-          {
-            path: '/dashboard/workplace',
-            name: 'Workplace',
-            component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: 'menu.dashboard.workplace', keepAlive: true, permission: ['dashboard'] }
-          }
-        ]
-      },
-      // forms
-      {
-        path: '/form',
-        redirect: '/form/base-form',
-        component: RouteView,
-        meta: { title: 'menu.form', icon: 'form', permission: ['form'] },
-        children: [
-          {
-            path: '/form/base-form',
-            name: 'BaseForm',
-            component: () => import('@/views/form/basicForm'),
-            meta: { title: 'menu.form.basic-form', keepAlive: true, permission: ['form'] }
-          },
-          {
-            path: '/form/step-form',
-            name: 'StepForm',
-            component: () => import('@/views/form/stepForm/StepForm'),
-            meta: { title: 'menu.form.step-form', keepAlive: true, permission: ['form'] }
-          },
-          {
-            path: '/form/advanced-form',
-            name: 'AdvanceForm',
-            component: () => import('@/views/form/advancedForm/AdvancedForm'),
-            meta: { title: 'menu.form.advanced-form', keepAlive: true, permission: ['form'] }
-          }
-        ]
-      },
-      // list
-      {
-        path: '/list',
-        name: 'list',
-        component: RouteView,
-        redirect: '/list/table-list',
-        meta: { title: 'menu.list', icon: 'table', permission: ['table'] },
-        children: [
-          {
-            path: '/list/table-list/:pageNo([1-9]\\d*)?',
-            name: 'TableListWrapper',
-            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            path: '/operations/basic-list',
+            name: 'operations1',
             component: () => import('@/views/list/TableList'),
-            meta: { title: 'menu.list.table-list', keepAlive: true, permission: ['table'] }
-          },
-          {
-            path: '/list/basic-list',
-            name: 'BasicList',
-            component: () => import('@/views/list/BasicList'),
-            meta: { title: 'menu.list.basic-list', keepAlive: true, permission: ['table'] }
-          },
-          {
-            path: '/list/card',
-            name: 'CardList',
-            component: () => import('@/views/list/CardList'),
-            meta: { title: 'menu.list.card-list', keepAlive: true, permission: ['table'] }
-          },
-          {
-            path: '/list/search',
-            name: 'SearchList',
-            component: () => import('@/views/list/search/SearchLayout'),
-            redirect: '/list/search/article',
-            meta: { title: 'menu.list.search-list', keepAlive: true, permission: ['table'] },
-            children: [
-              {
-                path: '/list/search/article',
-                name: 'SearchArticles',
-                component: () => import('../views/list/search/Article'),
-                meta: { title: 'menu.list.search-list.articles', permission: ['table'] }
-              },
-              {
-                path: '/list/search/project',
-                name: 'SearchProjects',
-                component: () => import('../views/list/search/Projects'),
-                meta: { title: 'menu.list.search-list.projects', permission: ['table'] }
-              },
-              {
-                path: '/list/search/application',
-                name: 'SearchApplications',
-                component: () => import('../views/list/search/Applications'),
-                meta: { title: 'menu.list.search-list.applications', permission: ['table'] }
-              }
-            ]
+            meta: { title: '超算供应商管理',}
+          },{
+            path: '/operations/basic-list2',
+            name: 'operations2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '超算供应商注册',}
+          },{
+            path: '/operations/basic-list3',
+            name: 'operations3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '上架超算资源池商品',}
+          },{
+            path: '/operations/basic-list4',
+            name: 'operations4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '上架超算算力商品',}
           }
         ]
       },
-
-      // profile
       {
-        path: '/profile',
-        name: 'profile',
+        path: '/productapproval',
+        name: 'productapproval',
         component: RouteView,
-        redirect: '/profile/basic',
-        meta: { title: 'menu.profile', icon: 'profile', permission: ['profile'] },
+        redirect: '/productapproval/basic-list',
+        meta: { title: '商品审核中心', icon: 'table', permission: ['table'] },
         children: [
           {
-            path: '/profile/basic',
-            name: 'ProfileBasic',
-            component: () => import('@/views/profile/basic'),
-            meta: { title: 'menu.profile.basic', permission: ['profile'] }
-          },
-          {
-            path: '/profile/advanced',
-            name: 'ProfileAdvanced',
-            component: () => import('@/views/profile/advanced/Advanced'),
-            meta: { title: 'menu.profile.advanced', permission: ['profile'] }
+            path: '/productapproval/basic-list',
+            name: 'productapproval1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '审核商品上架请求',}
+          },{
+            path: '/productapproval/basic-list2',
+            name: 'productapproval2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '审核资源池商品上架请求',}
+          },{
+            path: '/productapproval/basic-list3',
+            name: 'productapproval3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '审核调度流程发布请求',}
           }
         ]
       },
-
-      // result
       {
-        path: '/result',
-        name: 'result',
+        path: '/productcapacitymanagement',
+        name: 'productcapacitymanagement',
         component: RouteView,
-        redirect: '/result/success',
-        meta: { title: 'menu.result', icon: 'check-circle-o', permission: ['result'] },
+        redirect: '/productcapacitymanagement/basic-list',
+        meta: { title: '商品容量管理', icon: 'table', permission: ['table'] },
         children: [
           {
-            path: '/result/success',
-            name: 'ResultSuccess',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/result/Success'),
-            meta: { title: 'menu.result.success', keepAlive: false, hiddenHeaderContent: true, permission: ['result'] }
-          },
-          {
-            path: '/result/fail',
-            name: 'ResultFail',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/result/Error'),
-            meta: { title: 'menu.result.fail', keepAlive: false, hiddenHeaderContent: true, permission: ['result'] }
+            path: '/productcapacitymanagement/basic-list',
+            name: 'productcapacitymanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '业务统一告警的配置',}
+          },{
+            path: '/productcapacitymanagement/basic-list2',
+            name: 'productcapacitymanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '商品库存告警',}
+          },{
+            path: '/productcapacitymanagement/basic-list3',
+            name: 'productcapacitymanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '商品订单告警',}
+          },{
+            path: '/productcapacitymanagement/basic-list4',
+            name: 'productcapacitymanagement4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '商品下单相关告警',}
           }
         ]
       },
-
-      // Exception
       {
-        path: '/exception',
-        name: 'exception',
+        path: '/aisystem',
+        name: 'aisystem',
         component: RouteView,
-        redirect: '/exception/403',
-        meta: { title: 'menu.exception', icon: 'warning', permission: ['exception'] },
+        redirect: '/aisystem/basic-list',
+        meta: { title: 'AI推荐系统', icon: 'table', permission: ['table'] },
         children: [
           {
-            path: '/exception/403',
-            name: 'Exception403',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
-            meta: { title: 'menu.exception.not-permission', permission: ['exception'] }
+            path: '/aisystem/basic-list',
+            name: 'aisystem1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '创建用户画像',}
+          },{
+            path: '/aisystem/basic-list2',
+            name: 'aisystem2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '用户使用习惯，常用参数的采集',}
+          },{
+            path: '/aisystem/basic-list3',
+            name: 'aisystem3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '用户数据的数据仓库的管理',}
+          },{
+            path: '/aisystem/basic-list4',
+            name: 'aisystem4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '支持推荐算法',}
+          },{
+            path: '/aisystem/basic-list5',
+            name: 'aisystem5',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '推荐数据验证',}
           },
+        ]
+      },
+      {
+        path: '/discountmanagement',
+        name: 'discountmanagement',
+        component: RouteView,
+        redirect: '/discountmanagement/basic-list',
+        meta: { title: '促销管理', icon: 'table', permission: ['table'] },
+        children: [
           {
-            path: '/exception/404',
-            name: 'Exception404',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
-            meta: { title: 'menu.exception.not-find', permission: ['exception'] }
+            path: '/discountmanagement/basic-list',
+            name: 'discountmanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '优惠券',}
+          },{
+            path: '/discountmanagement/basic-list2',
+            name: 'discountmanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '满减送',}
+          },{
+            path: '/discountmanagement/basic-list3',
+            name: 'discountmanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '限时优惠',}
+          },{
+            path: '/discountmanagement/basic-list4',
+            name: 'discountmanagement4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '组合套餐',}
+          },{
+            path: '/discountmanagement/basic-list5',
+            name: 'discountmanagement5',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '礼品卡',}
           },
+        ]
+      },
+      {
+        path: '/activitymanagement',
+        name: 'activitymanagement',
+        component: RouteView,
+        redirect: '/activitymanagement/basic-list',
+        meta: { title: '活动管理', icon: 'table', permission: ['table'] },
+        children: [
           {
-            path: '/exception/500',
-            name: 'Exception500',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
-            meta: { title: 'menu.exception.server-error', permission: ['exception'] }
+            path: '/activitymanagement/basic-list',
+            name: 'activitymanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '新人礼',}
+          },{
+            path: '/activitymanagement/basic-list2',
+            name: 'activitymanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '签到奖励',}
+          },{
+            path: '/activitymanagement/basic-list3',
+            name: 'activitymanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '邀请奖励',}
+          },{
+            path: '/activitymanagement/basic-list4',
+            name: 'activitymanagement4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '充值礼包',}
+          },{
+            path: '/activitymanagement/basic-list5',
+            name: 'activitymanagement5',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '消费奖励',}
+          },
+        ]
+      },
+      {
+        path: '/admanagement',
+        name: 'admanagement',
+        component: RouteView,
+        redirect: '/admanagement/basic-list',
+        meta: { title: '广告和新闻管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/admanagement/basic-list',
+            name: 'admanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '广告的创建',}
+          },{
+            path: '/admanagement/basic-list2',
+            name: 'admanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '广告的计费和购买',}
+          },{
+            path: '/admanagement/basic-list3',
+            name: 'admanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '广告的位置管理',}
+          },{
+            path: '/admanagement/basic-list4',
+            name: 'admanagement4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '定向广告管理',}
+          }
+        ]
+      },{
+        path: '/statistics',
+        name: 'statistics',
+        component: RouteView,
+        redirect: '/statistics/basic-list',
+        meta: { title: '统计分析', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/statistics/basic-list',
+            name: 'statistics1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '指挥中心大屏',}
+          },{
+            path: '/statistics/basic-list2',
+            name: 'statistics2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '仪表盘',}
+          },{
+            path: '/statistics/basic-list3',
+            name: 'statistics3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '报表',}
           }
         ]
       },
-
-      // account
       {
-        path: '/account',
+        path: '/hashratebilling',
+        name: 'hashratebilling',
         component: RouteView,
-        redirect: '/account/center',
-        name: 'account',
-        meta: { title: 'menu.account', icon: 'user', keepAlive: true, permission: ['user'] },
+        redirect: '/hashratebilling/basic-list',
+        meta: { title: '算力计费', icon: 'table', permission: ['table'] },
         children: [
           {
-            path: '/account/center',
-            name: 'center',
-            component: () => import('@/views/account/center'),
-            meta: { title: 'menu.account.center', keepAlive: true, permission: ['user'] }
-          },
-          {
-            path: '/account/settings',
-            name: 'settings',
-            component: () => import('@/views/account/settings/Index'),
-            meta: { title: 'menu.account.settings', hideHeader: true, permission: ['user'] },
-            redirect: '/account/settings/basic',
-            hideChildrenInMenu: true,
-            children: [
-              {
-                path: '/account/settings/basic',
-                name: 'BasicSettings',
-                component: () => import('@/views/account/settings/BasicSetting'),
-                meta: { title: 'account.settings.menuMap.basic', hidden: true, permission: ['user'] }
-              },
-              {
-                path: '/account/settings/security',
-                name: 'SecuritySettings',
-                component: () => import('@/views/account/settings/Security'),
-                meta: {
-                  title: 'account.settings.menuMap.security',
-                  hidden: true,
-                  keepAlive: true,
-                  permission: ['user']
-                }
-              },
-              {
-                path: '/account/settings/custom',
-                name: 'CustomSettings',
-                component: () => import('@/views/account/settings/Custom'),
-                meta: { title: 'account.settings.menuMap.custom', hidden: true, keepAlive: true, permission: ['user'] }
-              },
-              {
-                path: '/account/settings/binding',
-                name: 'BindingSettings',
-                component: () => import('@/views/account/settings/Binding'),
-                meta: { title: 'account.settings.menuMap.binding', hidden: true, keepAlive: true, permission: ['user'] }
-              },
-              {
-                path: '/account/settings/notification',
-                name: 'NotificationSettings',
-                component: () => import('@/views/account/settings/Notification'),
-                meta: {
-                  title: 'account.settings.menuMap.notification',
-                  hidden: true,
-                  keepAlive: true,
-                  permission: ['user']
-                }
-              }
-            ]
+            path: '/hashratebilling/basic-list',
+            name: 'hashratebilling1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '算例的价格模型',}
+          },{
+            path: '/hashratebilling/basic-list2',
+            name: 'hashratebilling2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '费用可视化',}
+          },{
+            path: '/hashratebilling/basic-list3',
+            name: 'hashratebilling3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '费用报表',}
           }
+        ]
+      },
+      {
+        path: '/compliance',
+        name: 'compliance',
+        component: RouteView,
+        redirect: '/compliance/basic-list',
+        meta: { title: '合规和优化', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/compliance/basic-list',
+            name: 'compliance1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '资源使用率优化',}
+          },{
+            path: '/compliance/basic-list2',
+            name: 'compliance2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '合规性检查',}
+          }
+        ]
+      },
+      {
+        path: '/workordermanagement',
+        name: 'workordermanagement',
+        component: RouteView,
+        redirect: '/workordermanagement/basic-list',
+        meta: { title: '用户工单支持', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/workordermanagement/basic-list',
+            name: 'workordermanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '工单服务配置',}
+          },{
+            path: '/workordermanagement/basic-list2',
+            name: 'workordermanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '支持流程',}
+          },{
+            path: '/workordermanagement/basic-list3',
+            name: 'workordermanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '工作台',}
+          },{
+            path: '/workordermanagement/basic-list4',
+            name: 'workordermanagement4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: 'SLA配置',}
+          }
+        ]
+      },
+      {
+        path: '/dispatch',
+        name: 'dispatch',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '调度任务', icon: 'table', permission: ['table'] }
+      },{
+        path: '/dispatch2',
+        name: 'dispatch2',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '超算作业', icon: 'table', permission: ['table'] }
+      },{
+        path: '/dispatch3',
+        name: 'dispatch3',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '调度统计', icon: 'table', permission: ['table'] }
+      },
+      {
+        path: '/om',
+        name: 'om',
+        component: RouteView,
+        redirect: '/om/basic-list',
+        meta: { title: '异构云平台统一管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/om/basic-list',
+            name: 'om1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '私有云',}
+          },{
+            path: '/om/basic-list2',
+            name: 'om2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '私有云',}
+          },
+        ]
+      },
+      {
+        path: '/rb',
+        name: 'rb',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '资源池', icon: 'table', permission: ['table'] }
+      },
+      {
+        path: '/params',
+        name: 'params',
+        component: RouteView,
+        redirect: '/params/basic-list',
+        meta: { title: '统一资源参数', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/params/basic-list',
+            name: 'params1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '虚拟机模板',}
+          },{
+            path: '/params/basic-list2',
+            name: 'params2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '计算规格',}
+          },{
+            path: '/params/basic-list3',
+            name: 'params3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: 'IP地址管理',}
+          },{
+            path: '/params/basic-list4',
+            name: 'params4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '命名规范',}
+          },
+        ]
+      },
+      {
+        path: '/orginazation',
+        name: 'orginazation',
+        component: RouteView,
+        redirect: '/orginazation/basic-list',
+        meta: { title: '运维组织架构', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/orginazation/basic-list',
+            name: 'orginazation1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '组织架构',}
+          },{
+            path: '/orginazation/basic-list2',
+            name: 'orginazation2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '运维人员管理',}
+          }
+        ]
+      },
+      {
+        path: '/product',
+        name: 'product',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '产品目录', icon: 'table', permission: ['table'] }
+      },
+      {
+        path: '/resourcemanagement',
+        name: 'resourcemanagement',
+        component: RouteView,
+        redirect: '/resourcemanagement/basic-list',
+        meta: { title: '资源管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/resourcemanagement/basic-list',
+            name: 'resourcemanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '资源申请',}
+          },{
+            path: '/resourcemanagement/basic-list2',
+            name: 'resourcemanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '基础资源运维变更',}
+          },{
+            path: '/resourcemanagement/basic-list3',
+            name: 'resourcemanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '用户的运维操作',}
+          },{
+            path: '/resourcemanagement/basic-list4',
+            name: 'resourcemanagement4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '资源租期和回收策略',}
+          },{
+            path: '/resourcemanagement/basic-list5',
+            name: 'resourcemanagement5',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '操作授权',}
+          },
+        ]
+      },
+      {
+        path: '/monitor',
+        name: 'monitor',
+        component: RouteView,
+        redirect: '/monitor/basic-list',
+        meta: { title: '监控告警', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/monitor/basic-list',
+            name: 'monitor1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '全方位监控',}
+          },{
+            path: '/monitor/basic-list2',
+            name: 'monitor2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '告警配置',}
+          },{
+            path: '/monitor/basic-list3',
+            name: 'monitor3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '告警处理',}
+          },{
+            path: '/monitor/basic-list4',
+            name: 'monitor4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '仪表盘',}
+          }
+        ]
+      },
+      {
+        path: '/visitcontrol',
+        name: 'visitcontrol',
+        component: RouteView,
+        redirect: '/visitcontrol/basic-list',
+        meta: { title: '云资源访问控制', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/visitcontrol/basic-list',
+            name: 'visitcontrol1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '多协议支持',}
+          },{
+            path: '/visitcontrol/basic-list2',
+            name: 'visitcontrol2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '会话管理',}
+          },{
+            path: '/visitcontrol/basic-list3',
+            name: 'visitcontrol3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '命令审计',}
+          }
+        ]
+      },
+      {
+        path: '/datacentermanagement',
+        name: 'datacentermanagement',
+        component: RouteView,
+        redirect: '/datacentermanagement/basic-list',
+        meta: { title: '数据中心管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/datacentermanagement/basic-list',
+            name: 'datacentermanagement1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '台账与信息管理',}
+          },{
+            path: '/datacentermanagement/basic-list2',
+            name: 'datacentermanagement2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '资产生命周期管理',}
+          },{
+            path: '/datacentermanagement/basic-list3',
+            name: 'datacentermanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '资产统计分析',}
+          },{
+            path: '/datacentermanagement/basic-list3',
+            name: 'datacentermanagement3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '数据中心资产可视化',}
+          }
+        ]
+      },
+      {
+        path: '/pay',
+        name: 'pay',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '支付网关', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay1',
+        name: 'pay1',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '资金账户', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay2',
+        name: 'pay2',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '预付费与充值', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay3',
+        name: 'pay3',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '支付管理', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay4',
+        name: 'pay4',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '退款管理', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay5',
+        name: 'pay5',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '账单管理', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay6',
+        name: 'pay6',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '发票管理', icon: 'table', permission: ['table'] },
+      },{
+        path: '/pay7',
+        name: 'pay7',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '在线支持', icon: 'table', permission: ['table'] },
+      },
+      {
+        path: '/system',
+        name: 'system',
+        component: RouteView,
+        redirect: '/system/basic-list',
+        meta: { title: '系统管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/system/basic-list',
+            name: 'system1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '用户认证',}
+          },{
+            path: '/system/basic-list2',
+            name: 'system2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '密码配置',}
+          },{
+            path: '/system/basic-list3',
+            name: 'system3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '安全访问配置',}
+          },{
+            path: '/system/basic-list4',
+            name: 'system4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '数据字典',}
+          },{
+            path: '/system/basic-list5',
+            name: 'system5',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '权限管理',}
+          },
+        ]
+      },
+      {
+        path: '/notice',
+        name: 'notice',
+        component: RouteView,
+        redirect: '/notice/basic-list',
+        meta: { title: '通知管理', icon: 'table', permission: ['table'] },
+        children: [
+          {
+            path: '/notice/basic-list',
+            name: 'notice1',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '统一通知',}
+          },{
+            path: '/notice/basic-list2',
+            name: 'notice2',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '短信通知',}
+          },{
+            path: '/notice/basic-list3',
+            name: 'notice3',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '钉钉通知',}
+          },{
+            path: '/notice/basic-list4',
+            name: 'notice4',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '微信通知',}
+          },{
+            path: '/notice/basic-list5',
+            name: 'notice5',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '邮件通知',}
+          },{
+            path: '/notice/basic-list6',
+            name: 'notice6',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '站内信',}
+          },
         ]
       }
-
-      // other
-      /*
-      {
-        path: '/other',
-        name: 'otherPage',
-        component: PageView,
-        meta: { title: '其他组件', icon: 'slack', permission: [ 'dashboard' ] },
-        redirect: '/other/icon-selector',
-        children: [
-          {
-            path: '/other/icon-selector',
-            name: 'TestIconSelect',
-            component: () => import('@/views/other/IconSelectorView'),
-            meta: { title: 'IconSelector', icon: 'tool', keepAlive: true, permission: [ 'dashboard' ] }
-          },
-          {
-            path: '/other/list',
-            component: RouteView,
-            meta: { title: '业务布局', icon: 'layout', permission: [ 'support' ] },
-            redirect: '/other/list/tree-list',
-            children: [
-              {
-                path: '/other/list/tree-list',
-                name: 'TreeList',
-                component: () => import('@/views/other/TreeList'),
-                meta: { title: '树目录表格', keepAlive: true }
-              },
-              {
-                path: '/other/list/edit-table',
-                name: 'EditList',
-                component: () => import('@/views/other/TableInnerEditList'),
-                meta: { title: '内联编辑表格', keepAlive: true }
-              },
-              {
-                path: '/other/list/user-list',
-                name: 'UserList',
-                component: () => import('@/views/other/UserList'),
-                meta: { title: '用户列表', keepAlive: true }
-              },
-              {
-                path: '/other/list/role-list',
-                name: 'RoleList',
-                component: () => import('@/views/other/RoleList'),
-                meta: { title: '角色列表', keepAlive: true }
-              },
-              {
-                path: '/other/list/system-role',
-                name: 'SystemRole',
-                component: () => import('@/views/role/RoleList'),
-                meta: { title: '角色列表2', keepAlive: true }
-              },
-              {
-                path: '/other/list/permission-list',
-                name: 'PermissionList',
-                component: () => import('@/views/other/PermissionList'),
-                meta: { title: '权限列表', keepAlive: true }
-              }
-            ]
-          }
-        ]
-      }
-      */
-    ]
+    ],
   },
   {
     path: '*',

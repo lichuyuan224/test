@@ -22,7 +22,9 @@ const serverList = (options) => {
       description: '这是一段描述',
       callNo: Mock.mock('@integer(1, 999)'),
       status: Mock.mock('@integer(0, 3)'),
+      type: Mock.mock('@type'),
       updatedAt: Mock.mock('@datetime'),
+      createdAt: Mock.mock('@datetime'),
       editable: false
     })
   }
@@ -65,7 +67,7 @@ const projects = () => {
     {
       id: 4,
       cover: 'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png',
-      title: 'Ant Design Pro',
+      title: '和林格尔多云算力调度平台',
       description: '那时候我只会想自己想要什么，从不想自己拥有什么',
       status: 1,
       updatedAt: '2018-07-26 00:00:00'

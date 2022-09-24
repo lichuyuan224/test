@@ -13,7 +13,6 @@
       广告代码 真实项目中请移除
       production remove this Ads
     -->
-    <ads v-if="isProPreviewSite && !collapsed"/>
     <!-- Ads end -->
 
     <!-- 1.0.0+ 版本 pro-layout 提供 API，
@@ -21,19 +20,41 @@
     -->
     <template v-slot:menuHeaderRender>
       <div>
-        <img src="@/assets/logo.svg" />
-        <h1>{{ title }}</h1>
+        <img src="@/assets/helin-logo.png" style="height: 44px;width: 70px"/>
+        <a-dropdown>
+          <span class="ant-dropdown-link" @click.prevent>
+            <span style="margin-left: 20px;
+    margin-right: 54px;">{{ center }}</span>
+            <i class="iconfont icon-down"></i>
+          </span>
+
+          <template #overlay>
+            <a-menu @click="centerChange">
+              <a-menu-item key="运营中心">
+                <a href="javascript:;" >运营中心</a>
+              </a-menu-item>
+              <a-menu-item key="调度中心">
+                <a href="javascript:;" >调度中心</a>
+              </a-menu-item>
+              <a-menu-item key="运维中心">
+                <a href="javascript:;">运维中心</a>
+              </a-menu-item>
+              <a-menu-item key="支付中心">
+                <a href="javascript:;">支付中心</a>
+              </a-menu-item>
+              <a-menu-item key="系统管理">
+                <a href="javascript:;">系统管理</a>
+              </a-menu-item>
+            </a-menu>
+          </template>
+        </a-dropdown>
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,
           增加 Header 左侧内容区自定义
     -->
     <template v-slot:headerContentRender>
-      <div>
-        <a-tooltip title="刷新页面">
-          <a-icon type="reload" style="font-size: 18px;cursor: pointer;" @click="() => { $message.info('只是一个DEMO') }" />
-        </a-tooltip>
-      </div>
+
     </template>
 
     <setting-drawer v-if="isDev" :settings="settings" @change="handleSettingChange">
@@ -48,7 +69,7 @@
     <template v-slot:footerRender>
       <global-footer />
     </template>
-    <router-view />
+    <router-view  :key="key" />
   </pro-layout>
 </template>
 
@@ -62,6 +83,7 @@ import defaultSettings from '@/config/defaultSettings'
 import RightContent from '@/components/GlobalHeader/RightContent'
 import GlobalFooter from '@/components/GlobalFooter'
 import Ads from '@/components/Other/CarbonAds'
+import { asyncRouterMap } from '@/config/router.config.js'
 
 export default {
   name: 'BasicLayout',
@@ -103,18 +125,34 @@ export default {
       query: {},
 
       // 是否手机模式
-      isMobile: false
+      isMobile: false,
+      center: '运营中心'
     }
   },
   computed: {
     ...mapState({
       // 动态主路由
       mainMenu: state => state.permission.addRouters
-    })
+    }),
+    key() {
+      return this.$route.path + Math.random();
+    }
   },
   created () {
-    const routes = this.mainMenu.find(item => item.path === '/')
-    this.menus = (routes && routes.children) || []
+    const routes = asyncRouterMap.find(item => item.path === '/')
+    this.menus = ((routes && routes.children) || []).filter(c => ['productapproval',
+      'productcapacitymanagement',
+      'aisystem',
+      'discountmanagement',
+      'activitymanagement',
+      'admanagement',
+      'resourcemanagement',
+      'statistics',
+      'dispatchcenter',
+      'hashratebilling',
+      'compliance',
+      'workordermanagement',
+      'operations'].includes(c.name))
     // 处理侧栏收起状态
     this.$watch('collapsed', () => {
       this.$store.commit(SIDEBAR_TYPE, this.collapsed)
@@ -142,6 +180,37 @@ export default {
   },
   methods: {
     i18nRender,
+    centerChange({ key }) {
+      this.center = key;
+      const a = {
+        '运营中心': ['productapproval',
+          'productcapacitymanagement',
+          'aisystem',
+          'discountmanagement',
+          'activitymanagement',
+          'admanagement',
+          'resourcemanagement',
+          'statistics',
+          'dispatchcenter',
+          'hashratebilling',
+          'compliance',
+          'workordermanagement',
+          'operations'],
+        '调度中心': ['dispatch', 'dispatch2', 'dispatch3'],
+        '运维中心': ['om', 'rb',
+          'params',
+          'orginazation',
+          'product',
+          'resourcemanagement',
+          'monitor',
+          'visitcontrol',
+          'datacentermanagement'],
+        '支付中心': ['pay','pay1','pay2','pay3','pay4','pay5','pay6','pay7'],
+        '系统管理': ['system', 'notice'],
+      }
+      const routes = asyncRouterMap.find(item => item.path === '/')
+      this.menus = ((routes && routes.children) || []).filter(c => a[key].includes(c.name))
+    },
     handleMediaQuery (val) {
       this.query = val
       if (this.isMobile && !val['screen-xs']) {
