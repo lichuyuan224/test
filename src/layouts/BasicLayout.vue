@@ -141,6 +141,7 @@ export default {
   created () {
     const routes = asyncRouterMap.find(item => item.path === '/')
     this.menus = ((routes && routes.children) || []).filter(c => ['productapproval',
+      'operateBigScreen',
       'productcapacitymanagement',
       'aisystem',
       'discountmanagement',
@@ -183,7 +184,9 @@ export default {
     centerChange({ key }) {
       this.center = key;
       const a = {
-        '运营中心': ['productapproval',
+        '运营中心': [
+          'operateBigScreen',
+          'productapproval',
           'productcapacitymanagement',
           'aisystem',
           'discountmanagement',
@@ -197,7 +200,10 @@ export default {
           'workordermanagement',
           'operations'],
         '调度中心': ['dispatch', 'dispatch2', 'dispatch3'],
-        '运维中心': ['om', 'rb',
+        '运维中心': [
+          'devopsBigScreen',
+          'dataCenter',
+          'om', 'rb',
           'params',
           'orginazation',
           'product',

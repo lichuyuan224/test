@@ -16,6 +16,12 @@ export const asyncRouterMap = [
     redirect: '/operations/basic-list',
     children: [
       {
+        path: '/operateCenter/bigScreen',
+        name: 'operateBigScreen',
+        component: () => import('@/views/big-screen'),
+        meta: { title: '指挥中心大屏'}
+      },
+      {
         path: '/operations',
         name: 'operations',
         component: RouteView,
@@ -25,14 +31,15 @@ export const asyncRouterMap = [
           {
             path: '/operations/basic-list',
             name: 'operations1',
-            component: () => import('@/views/list/TableList'),
+            component: () => import('@/views/cc-yunyin-center/super-management'),
             meta: { title: '超算供应商管理',}
           },{
             path: '/operations/basic-list2',
             name: 'operations2',
             component: () => import('@/views/list/TableList'),
             meta: { title: '超算供应商注册',}
-          },{
+          }
+          ,{
             path: '/operations/basic-list3',
             name: 'operations3',
             component: () => import('@/views/list/TableList'),
@@ -349,6 +356,18 @@ export const asyncRouterMap = [
         name: 'dispatch3',
         component: () => import('@/views/list/TableList'),
         meta: { title: '调度统计', icon: 'table', permission: ['table'] }
+      },
+      {
+        path: '/devopsCenter/bigScreen',
+        name: 'devopsBigScreen',
+        component: () => import('@/views/big-screen'),
+        meta: { title: '指挥中心大屏'}
+      },
+      {
+        path: '/operations/data-center',
+        component: () => import('@/views/cc-yunwei-center/data-center'),
+        name: 'dataCenter',
+        meta: { title: '数据中心'}
       },
       {
         path: '/om',
