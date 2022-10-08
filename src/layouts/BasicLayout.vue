@@ -208,7 +208,6 @@ export default {
           'params',
           'orginazation',
           'product',
-          'resourcemanagement',
           'monitor',
           'visitcontrol',
           'datacentermanagement'],

@@ -57,7 +57,7 @@ export const asyncRouterMap = [
         name: 'productapproval',
         component: RouteView,
         redirect: '/productapproval/basic-list',
-        meta: { title: '商品审核中心', icon: 'table', permission: ['table'] },
+        meta: { title: '审核中心', icon: 'table', permission: ['table'] },
         children: [
           {
             path: '/productapproval/basic-list',
@@ -247,13 +247,7 @@ export const asyncRouterMap = [
         component: RouteView,
         redirect: '/statistics/basic-list',
         meta: { title: '统计分析', icon: 'table', permission: ['table'] },
-        children: [
-          {
-            path: '/statistics/basic-list',
-            name: 'statistics1',
-            component: () => import('@/views/list/TableList'),
-            meta: { title: '指挥中心大屏',}
-          },{
+        children: [{
             path: '/statistics/basic-list2',
             name: 'statistics2',
             component: () => import('@/views/list/TableList'),
@@ -370,11 +364,17 @@ export const asyncRouterMap = [
         meta: { title: '数据中心'}
       },
       {
+        path: '/product',
+        name: 'product',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '产品目录', icon: 'table', permission: ['table'] }
+      },
+      {
         path: '/om',
         name: 'om',
         component: RouteView,
         redirect: '/om/basic-list',
-        meta: { title: '异构云平台统一管理', icon: 'table', permission: ['table'] },
+        meta: { title: '云平台', icon: 'table', permission: ['table'] },
         children: [
           {
             path: '/om/basic-list',
@@ -400,7 +400,7 @@ export const asyncRouterMap = [
         name: 'params',
         component: RouteView,
         redirect: '/params/basic-list',
-        meta: { title: '统一资源参数', icon: 'table', permission: ['table'] },
+        meta: { title: '资源参数管理', icon: 'table', permission: ['table'] },
         children: [
           {
             path: '/params/basic-list',
@@ -445,34 +445,18 @@ export const asyncRouterMap = [
           }
         ]
       },
-      {
-        path: '/product',
-        name: 'product',
-        component: () => import('@/views/list/TableList'),
-        meta: { title: '产品目录', icon: 'table', permission: ['table'] }
-      },
+
       {
         path: '/resourcemanagement',
         name: 'resourcemanagement',
         component: RouteView,
         redirect: '/resourcemanagement/basic-list',
-        meta: { title: '资源管理', icon: 'table', permission: ['table'] },
-        children: [
-          {
-            path: '/resourcemanagement/basic-list',
-            name: 'resourcemanagement1',
-            component: () => import('@/views/list/TableList'),
-            meta: { title: '资源申请',}
-          },{
+        meta: { title: '资源的运维管理', icon: 'table', permission: ['table'] },
+        children: [{
             path: '/resourcemanagement/basic-list2',
             name: 'resourcemanagement2',
             component: () => import('@/views/list/TableList'),
             meta: { title: '基础资源运维变更',}
-          },{
-            path: '/resourcemanagement/basic-list3',
-            name: 'resourcemanagement3',
-            component: () => import('@/views/list/TableList'),
-            meta: { title: '用户的运维操作',}
           },{
             path: '/resourcemanagement/basic-list4',
             name: 'resourcemanagement4',
@@ -497,7 +481,7 @@ export const asyncRouterMap = [
             path: '/monitor/basic-list',
             name: 'monitor1',
             component: () => import('@/views/list/TableList'),
-            meta: { title: '全方位监控',}
+            meta: { title: '资源监控',}
           },{
             path: '/monitor/basic-list2',
             name: 'monitor2',
