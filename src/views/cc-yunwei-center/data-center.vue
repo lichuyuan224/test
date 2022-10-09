@@ -251,6 +251,9 @@ export default {
       if (this.$route.path === '/yunyinOperations/data-center') {
         this.$router.push('/rb')
       }
+      if (this.$route.path === '/my-center') {
+        this.$router.push('/my-rb')
+      }
     }
   }
 }
