@@ -352,6 +352,56 @@ export const asyncRouterMap = [
         meta: { title: '调度统计', icon: 'table', permission: ['table'] }
       },
       {
+        path: '/my-shop',
+        name: 'my-shop',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '我的商铺', icon: 'table', permission: ['table'] }
+      },{
+        path: '/my-center',
+        name: 'my-center',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '我的数据中心', icon: 'table', permission: ['table'] }
+      },{
+        path: '/my-rb',
+        name: 'my-rb',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '我的资源池', icon: 'table', permission: ['table'] }
+      },{
+        path: '/my-product',
+        name: 'my-product',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '我的商品', icon: 'table', permission: ['table'] }
+      },{
+        path: '/my-request',
+        name: 'my-request',
+        meta: { title: '我的工单', icon: 'table', permission: ['table'] },
+        component: RouteView,
+        redirect: '/my-request/workspace',
+        children: [
+          {
+            path: '/my-request/workspace',
+            name: 'workspace',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '工作台',}
+          },{
+            path: '/my-request/request-list',
+            name: 'request-list',
+            component: () => import('@/views/list/TableList'),
+            meta: { title: '工单列表',}
+          },
+        ]
+      },{
+        path: '/my-activity',
+        name: 'my-activity',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '活动管理', icon: 'table', permission: ['table'] }
+      },{
+        path: '/my-discount',
+        name: 'my-discount',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '优惠券', icon: 'table', permission: ['table'] }
+      },
+      {
         path: '/devopsCenter/bigScreen',
         name: 'devopsBigScreen',
         component: () => import('@/views/big-screen'),

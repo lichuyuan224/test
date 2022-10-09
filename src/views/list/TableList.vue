@@ -349,22 +349,22 @@ export default {
           scopedSlots: { customRender: 'name' }
         }, {
           title: '类型',
-          dataIndex: 'cpu'
+          dataIndex: 'discountType'
         }, {
           title: '序列号',
-          dataIndex: 'memory'
+          dataIndex: 'snId'
         }, {
           title: '超算供应商',
-          dataIndex: '100'
+          dataIndex: 'supplier'
         }, {
           title: '生效时间',
-          dataIndex: '10'
+          dataIndex: 'validRange'
         }, {
           title: '规则',
-          dataIndex: 'rbs'
+          dataIndex: 'discountName'
         }, {
           title: '商品范围',
-          dataIndex: 'centers'
+          dataIndex: 'discountRange'
         },
         {
           title: '发布时间',
