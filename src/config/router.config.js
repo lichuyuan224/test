@@ -481,23 +481,33 @@ export const asyncRouterMap = [
             path: '/monitor/basic-list',
             name: 'monitor1',
             component: () => import('@/views/list/TableList'),
-            meta: { title: '资源监控',}
+            meta: { title: '仪表盘',}
+          },{
+            path: '/monitor/show-pic1',
+            name: 'monitor2',
+            component: () => import('@/views/big-screen'),
+            meta: { title: '云资源监控大盘',}
+          },{
+            path: '/monitor/show-pic2',
+            name: 'monitor3',
+            component: () => import('@/views/big-screen'),
+            meta: { title: '资源状态图',}
+          },{
+            path: '/monitor/show-pic3',
+            name: 'monitor4',
+            component: () => import('@/views/big-screen'),
+            meta: { title: '告警概览',}
           },{
             path: '/monitor/basic-list2',
-            name: 'monitor2',
+            name: 'monitor5',
             component: () => import('@/views/list/TableList'),
-            meta: { title: '告警配置',}
+            meta: { title: '告警策略',}
           },{
             path: '/monitor/basic-list3',
-            name: 'monitor3',
+            name: 'monitor6',
             component: () => import('@/views/list/TableList'),
-            meta: { title: '告警处理',}
-          },{
-            path: '/monitor/basic-list4',
-            name: 'monitor4',
-            component: () => import('@/views/list/TableList'),
-            meta: { title: '仪表盘',}
-          }
+            meta: { title: '告警',}
+          },
         ]
       },
       {

@@ -13,13 +13,13 @@
  */
 
 export default {
-  "layout": "sidemenu",
-  "contentWidth": "Fluid",
-  "primaryColor": "#02A04E",
-  "fixedHeader": false,
-  "fixSiderbar": false,
-  "hideHintAlert": false,
-  "hideCopyButton": false,
+  'layout': 'sidemenu',
+  'contentWidth': 'Fluid',
+  'primaryColor': '#02A04E',
+  'fixedHeader': false,
+  'fixSiderbar': false,
+  'hideHintAlert': false,
+  'hideCopyButton': false,
   navTheme: 'light', // theme for nav menu
   colorWeak: false,
   menu: {

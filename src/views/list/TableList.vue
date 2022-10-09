@@ -1,78 +1,78 @@
 <template>
-    <a-card :bordered="false">
+  <a-card :bordered="false">
 
-      <div class="table-operator" v-if='!createRight'>
-        <a-button type="primary" icon="plus" @click="handleAdd">新建</a-button>
-        <a-button  icon="edit" :disabled='selectedRowKeys.length === 0'>编辑</a-button>
-        <a-button  icon="delete" :disabled='selectedRowKeys.length === 0'>删除</a-button>
-      </div>
-      <div style="margin-bottom: 10px">
-        <a-row>
-          <a-col :span="4">
-            <a-select
-              show-search
-              placeholder="状态： 全部"
-              style="width: 250px"
-            >
-            </a-select>
-          </a-col>
-          <a-col :span="4">
-            <a-select
-              show-search
-              placeholder="执行人： 全部"
-              style="width: 250px"
-            >
-            </a-select>
-          </a-col>
-          <a-col :span="4">
-            <a-date-picker  placeholder="执行时间" style="width: 250px"/>
-          </a-col>
-          <a-col :span="4">
-            <a-input  placeholder="搜索..." allow-clear  style="width: 250px"/>
-          </a-col>
-          <a-col :span="2" :offset="6" v-if='createRight'>
-              <a-button type="primary" @click="handleAdd">快速创建</a-button>
-          </a-col>
-        </a-row>
-
-
+    <div class="table-operator" v-if="!createRight">
+      <a-button type="primary" icon="plus" @click="handleAdd">新建</a-button>
+      <a-button icon="edit" :disabled="selectedRowKeys.length === 0">编辑</a-button>
+      <a-button icon="delete" :disabled="selectedRowKeys.length === 0">删除</a-button>
+    </div>
+    <div style="margin-bottom: 10px">
+      <a-row>
+        <a-col :span="4">
+          <a-select
+            show-search
+            placeholder="状态： 全部"
+            style="width: 250px"
+          >
+          </a-select>
+        </a-col>
+        <a-col :span="4">
+          <a-select
+            show-search
+            placeholder="执行人： 全部"
+            style="width: 250px"
+          >
+          </a-select>
+        </a-col>
+        <a-col :span="4">
+          <a-date-picker placeholder="执行时间" style="width: 250px"/>
+        </a-col>
+        <a-col :span="4">
+          <a-input placeholder="搜索..." allow-clear style="width: 250px"/>
+        </a-col>
+        <a-col :span="2" :offset="6" v-if="createRight">
+          <a-button type="primary" @click="handleAdd">快速创建</a-button>
+        </a-col>
+      </a-row>
 
 
-      </div>
-      <s-table
-        ref="table"
-        size="default"
-        rowKey="key"
-        :columns="columns"
-        :data="loadData"
-        :alert="true"
-        :rowSelection="rowSelection"
-        showPagination="auto"
-      >
-        <span slot="serial" slot-scope="text, record, index">
-          {{ index + 1 }}
-        </span>
-        <span slot="name" slot-scope="text, record, index">
-          <a href=''>{{text}}</a>
-        </span>
-        <span slot="status" slot-scope="text">
-          <a-badge :status="text | statusTypeFilter" :text="text | statusFilter" />
-        </span>
-        <span slot="description" slot-scope="text">
-          <ellipsis :length="4" tooltip>{{ text }}</ellipsis>
-        </span>
-      </s-table>
 
-      <create-form
-        ref="createModal"
-        :visible="visible"
-        :loading="confirmLoading"
-        :model="mdl"
-        @cancel="handleCancel"
-        @ok="handleOk"
-      />
-      <step-by-step-modal ref="modal" @ok="handleOk"/>
-    </a-card>
+
+    </div>
+    <s-table
+      ref="table"
+      size="default"
+      rowKey="key"
+      :columns="columns"
+      :data="loadData"
+      :alert="true"
+      :rowSelection="rowSelection"
+      showPagination="auto"
+    >
+      <span slot="serial" slot-scope="text, record, index">
+        {{ index + 1 }}
+      </span>
+      <span slot="name" slot-scope="text, record, index">
+        <a href="">{{ text }}</a>
+      </span>
+      <span slot="status" slot-scope="text">
+        <a-badge :status="text | statusTypeFilter" :text="text | statusFilter" />
+      </span>
+      <span slot="description" slot-scope="text">
+        <ellipsis :length="4" tooltip>{{ text }}</ellipsis>
+      </span>
+    </s-table>
+
+    <create-form
+      ref="createModal"
+      :visible="visible"
+      :loading="confirmLoading"
+      :model="mdl"
+      @cancel="handleCancel"
+      @ok="handleOk"
+    />
+    <step-by-step-modal ref="modal" @ok="handleOk"/>
+  </a-card>
 </template>
 
 <script>
@@ -264,7 +264,7 @@ export default {
     }
   },
   mounted() {
-    this.createRight = this.$route.path === '/dispatch';
+    this.createRight = this.$route.path === '/dispatch'
     if (this.$route.path === '/operations/basic-list') {
       // this.columns.push({
       //   title: '测试',

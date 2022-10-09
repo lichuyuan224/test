@@ -1,47 +1,47 @@
 <template>
-  <div class='flex card-list'>
-    <div class='left-bar'>
+  <div class="flex card-list">
+    <div class="left-bar">
       <a-list
         rowKey="id"
         :grid="{gutter: 24, lg: 1, md: 1, sm: 1, xs: 1}"
         :dataSource="dataSource"
         class="card-list"
       >
-        <a-list-item slot="renderItem" slot-scope="item" @click='select(item)'>
+        <a-list-item slot="renderItem" slot-scope="item" @click="select(item)">
 
-          <a-card :hoverable="true" :class='{"cc-selected": item.selected}'>
-              <a-card-meta>
-                <a slot="title">{{ item.title }}</a>
-                <div class="cc-card" slot="description"><span><a-icon type="environment"/> 具体地址</span></div>
+          <a-card :hoverable="true" :class="{&quot;cc-selected&quot;: item.selected}">
+            <a-card-meta>
+              <a slot="title">{{ item.title }}</a>
+              <div class="cc-card" slot="description"><span><a-icon type="environment"/> 具体地址</span></div>
 
-                <div class='cc-card' style='display: block' slot="description">
-                  <div class='mrg-bottom drop-down-show' v-for="(num, index) in item.number">
-                      <img :src='ccIconPer'>
-                      <span v-if='index === "room"'>
-                        <span class='label'> 机房数量</span>
-                        <span class='number-color'>{{num}}</span>
-                      </span>
-                      <span v-if='index === "box"'>
-                        <span class='label'> 机柜数量</span>
-                        <span class='number-color'>{{num}}</span>
-                      </span>
-                      <span v-if='index === "vm"'>
-                        <span class='label'> 物理机数量</span>
-                        <span class='number-color'>{{num}}</span>
-                      </span>
-                      <span v-if='index === "switch"'>
-                        <span class='label'> 交换机数量</span>
-                        <span class='number-color'>{{num}}</span>
-                      </span>
-                    </div>
+              <div class="cc-card" style="display: block" slot="description">
+                <div class="mrg-bottom drop-down-show" v-for="(num, index) in item.number">
+                  <img :src="ccIconPer">
+                  <span v-if="index === &quot;room&quot;">
+                    <span class="label"> 机房数量</span>
+                    <span class="number-color">{{ num }}</span>
+                  </span>
+                  <span v-if="index === &quot;box&quot;">
+                    <span class="label"> 机柜数量</span>
+                    <span class="number-color">{{ num }}</span>
+                  </span>
+                  <span v-if="index === &quot;vm&quot;">
+                    <span class="label"> 物理机数量</span>
+                    <span class="number-color">{{ num }}</span>
+                  </span>
+                  <span v-if="index === &quot;switch&quot;">
+                    <span class="label"> 交换机数量</span>
+                    <span class="number-color">{{ num }}</span>
+                  </span>
                 </div>
-              </a-card-meta>
-            </a-card>
+              </div>
+            </a-card-meta>
+          </a-card>
 
         </a-list-item>
       </a-list>
     </div>
-    <div class='right-content'>
+    <div class="right-content">
       <a-list
         rowKey="id"
         :grid="{gutter: 24, lg: 2, md: 2, sm: 1, xs: 1}"
@@ -50,18 +50,18 @@
       >
         <a-list-item slot="renderItem" slot-scope="item">
           <a-card :hoverable="true">
-              <a-card-meta>
-                <a slot="title">{{ item.title }}</a>
-                <div class="meta-content" slot="description">{{ item.des }}</div>
-                <div class='cc-card mrg0B' slot="description">
-                  <div class='flex-1' v-for="(powerInfo, index) in item.power">
-                    <span v-if='index === "all"'>总算力：{{powerInfo}}</span>
-                    <span v-if='index === "on"'>已售算力：{{powerInfo}}</span>
-                    <span v-if='index === "off"'>剩余算力：{{powerInfo}}</span>
-                  </div>
+            <a-card-meta>
+              <a slot="title">{{ item.title }}</a>
+              <div class="meta-content" slot="description">{{ item.des }}</div>
+              <div class="cc-card mrg0B" slot="description">
+                <div class="flex-1" v-for="(powerInfo, index) in item.power">
+                  <span v-if="index === &quot;all&quot;">总算力：{{ powerInfo }}</span>
+                  <span v-if="index === &quot;on&quot;">已售算力：{{ powerInfo }}</span>
+                  <span v-if="index === &quot;off&quot;">剩余算力：{{ powerInfo }}</span>
                 </div>
-              </a-card-meta>
-            </a-card>
+              </div>
+            </a-card-meta>
+          </a-card>
         </a-list-item>
       </a-list>
     </div>
@@ -124,8 +124,8 @@ export default {
     select (item) {
       dataSource.forEach(d => {
         d.selected = d.id === item.id
-      });
-      this.selectData = item;
+      })
+      this.selectData = item
     }
   }
 }

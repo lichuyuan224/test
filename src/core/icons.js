@@ -10,5 +10,8 @@ import bxAnaalyse from '@/assets/icons/bx-analyse.svg?inline' // path to your '*
 import yunweiBigscreen from '@/assets/yunwei-bigscreen.jpg?inline'
 import yunyinBigscreen from '@/assets/yunyin-bigscreen.jpg?inline'
 import ccIconPer from '@/assets/icons/cc-icon-per.png?inline'
+import jiankongdapan from '@/assets/jiankongdapan.png?inline'
+import ziyuanzhuangtaitu from '@/assets/ziyuanzhuangtaitu.png?inline'
+import gaojinggailan from '@/assets/gaojinggailan.png?inline'
 
-export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer }
+export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan }

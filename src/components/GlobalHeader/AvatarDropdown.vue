@@ -1,8 +1,8 @@
 <template>
   <span class="ant-pro-account-avatar">
-      <a-avatar size="small" src="@/assets/helin-logo.png" class="antd-pro-global-header-index-avatar" />
-      <span>Admin</span>
-    </span>
+    <a-avatar size="small" src="@/assets/helin-logo.png" class="antd-pro-global-header-index-avatar" />
+    <span>Admin</span>
+  </span>
 </template>
 
 <script>

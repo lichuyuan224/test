@@ -23,7 +23,8 @@
         <img src="@/assets/helin-logo.png" style="height: 44px;width: 70px"/>
         <a-dropdown>
           <span class="ant-dropdown-link" @click.prevent>
-            <span style="margin-left: 20px;
+            <span
+              style="margin-left: 20px;
     margin-right: 54px;">{{ center }}</span>
             <i class="iconfont icon-down"></i>
           </span>
@@ -69,7 +70,7 @@
     <template v-slot:footerRender>
       <global-footer />
     </template>
-    <router-view  :key="key" />
+    <router-view :key="key" />
   </pro-layout>
 </template>
 
@@ -135,7 +136,7 @@ export default {
       mainMenu: state => state.permission.addRouters
     }),
     key() {
-      return this.$route.path + Math.random();
+      return this.$route.path + Math.random()
     }
   },
   created () {
@@ -183,7 +184,7 @@ export default {
   methods: {
     i18nRender,
     centerChange({ key }) {
-      this.center = key;
+      this.center = key
       const a = {
         '运营中心': [
           'operateBigScreen',
