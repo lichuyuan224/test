@@ -1,6 +1,6 @@
 <template>
   <div>
-  <a-card v-if="showImg" style="margin-bottom:24px" :bordered="false">
+  <a-card v-if="showImg" style="margin-bottom:24px;padding:0" class="img-box" :bordered="false">
     <img id="" style="width: 100%;" v-if="showImg" :src="imgUrl">
   </a-card>
   <a-card :bordered="false"> 
@@ -510,3 +510,11 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+  :deep(.img-box.ant-card) {
+    .ant-card-body {
+      padding:0;
+    }
+  }
+
+</style>
