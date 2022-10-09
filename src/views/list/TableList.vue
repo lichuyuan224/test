@@ -1,6 +1,9 @@
 <template>
-  <a-card :bordered="false">
-
+  <div>
+  <a-card v-if="showImg" style="margin-bottom:24px" :bordered="false">
+    <img id="" style="width: 100%;" v-if="showImg" :src="imgUrl">
+  </a-card>
+  <a-card :bordered="false"> 
     <div class="table-operator" v-if="!createRight">
       <a-button type="primary" icon="plus" @click="handleAdd">新建</a-button>
       <a-button icon="edit" :disabled="selectedRowKeys.length === 0">编辑</a-button>
@@ -74,12 +77,15 @@
     />
     <step-by-step-modal ref="modal" @ok="handleOk" />
   </a-card>
+  </div>
+
 </template>
 
 <script>
 import moment from 'moment'
 import { STable, Ellipsis } from '@/components'
 import { getRoleList, getServiceList } from '@/api/manage'
+import { diaodutongji } from '@/core/icons'
 
 import StepByStepModal from './modules/StepByStepModal'
 import CreateForm from './modules/CreateForm'
@@ -122,6 +128,8 @@ export default {
       advanced: false,
       // 查询参数
       queryParam: {},
+      showImg: false,
+      imgUrl: '',
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
         const requestParameters = Object.assign({}, parameter, this.queryParam)
@@ -246,6 +254,9 @@ export default {
   },
   mounted() {
     this.createRight = this.$route.path === '/dispatch'
+    this.showImg = this.$route.path === '/dispatch'
+    this.imgUrl = diaodutongji
+
     if (this.$route.path === '/rb' || this.$route.path === '/my-rb') {
       this.columns.push(...[
         {
