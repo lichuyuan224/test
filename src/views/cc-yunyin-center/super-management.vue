@@ -6,16 +6,16 @@
     class="card-list"
   >
     <a-list-item slot="renderItem" slot-scope="item" @click="select(item)">
-      <template v-if="!item || item.id === undefined">
+      <template v-if="!item || item.title === undefined">
         <a-button class="new-btn" type="dashed" style="height: 403px">
           <a-icon type="plus"/>
           新增
         </a-button>
       </template>
       <template v-else>
-        <a-card :hoverable="true" :class="{&quot;cc-selected&quot;: item.selected}">
+        <a-card :hoverable="true" :class="{'cc-selected': item.selected}">
           <a-card-meta>
-            <a slot="title">{{ item.title }}</a>
+            <a slot="title">{{ item.title + (item.id || '') }}</a>
             <div class="meta-content" slot="description">{{ item.des }}</div>
             <div class="cc-card" slot="description">
               <div class="label">数据中心</div>
@@ -30,9 +30,9 @@
               </div>
               <ul class="content">
                 <li v-for="(powerInfo, index) in item.power">
-                  <span v-if="index === &quot;all&quot;">总算力：{{ powerInfo }}</span>
-                  <span v-if="index === &quot;on&quot;">已售算力：{{ powerInfo }}</span>
-                  <span v-if="index === &quot;off&quot;">剩余算力：{{ powerInfo }}</span>
+                  <span v-if="index === 'all'">总算力：{{ powerInfo }} MFLOPS</span>
+                  <span v-if="index === 'on'">已售算力：{{ powerInfo }}</span>
+                  <span v-if="index === 'off'">剩余算力：{{ powerInfo }}</span>
                 </li>
               </ul>
             </div>
@@ -44,6 +44,26 @@
         </a-card>
       </template>
     </a-list-item>
+    <a-modal :width="640" v-model="visible" title="新增供应商" @ok="handleOk"
+             cancelText='取消' okText='确定'>
+      <a-form :form="form" v-bind="formLayout">
+        <a-form-item label="名称">
+          <a-input v-decorator="['title']" />
+        </a-form-item>
+        <a-form-item label="描述">
+          <a-textarea v-decorator="['des']"></a-textarea>
+        </a-form-item>
+        <a-form-item label="数据中心">
+          <a-select mode="multiple" placeholder="请选择数据中心" v-decorator="[ 'dataCenters', {rules: [{ required: true, message: '请选择数据中心'}]} ]">
+            <a-select-option value="和林格尔数据中心1">和林格尔数据中心1</a-select-option>
+            <a-select-option value="和林格尔数据中心2">和林格尔数据中心2</a-select-option>
+            <a-select-option value="和林格尔数据中心3">和林格尔数据中心3</a-select-option>
+            <a-select-option value="和林格尔数据中心4">和林格尔数据中心4</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-form>
+    </a-modal>
+
   </a-list>
 </template>
 
@@ -51,11 +71,11 @@
 
 const dataSource = []
 const defaultData = {
-  title: '直营店1',
+  title: '直营店',
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
   resourceBundle: '5.0',
-  power: {all: '200305', on: '77654', off: '122,651'},
+  power: {all: '200,305', on: '77,654', off: '122,651'},
   sales: '346,742.99',
   unit: '¥',
   selected: false
@@ -65,7 +85,7 @@ const aliData = {
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
   resourceBundle: '5.0',
-  power: {all: '36544', on: '11600', off: '24,944'},
+  power: {all: '36,544', on: '11,600', off: '24,944'},
   sales: '346,572.15',
   unit: '¥',
   selected: false
@@ -75,28 +95,52 @@ const huaweiData = {
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['华为云数据中心1', '华为云数据中心2'],
   resourceBundle: '5.0',
-  power: {all: '19343', on: '8001', off: '11342'},
+  power: {all: '19,343', on: '8,001', off: '11,342'},
   sales: '266,990.03',
   unit: '¥',
   selected: false
 }
-dataSource.push({})
-for (let i = 0; i < 7; i++) {
-  if (!(i % 3)) {
-    dataSource.push(Object.assign({id: i}, aliData))
-  } else if (!(i % 4)) {
-    dataSource.push(Object.assign({id: i}, huaweiData))
-  } else {
-    dataSource.push(Object.assign( {id: i}, defaultData))
-  }
-
+const txData = {
+  title: '腾讯云',
+  des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
+  dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
+  resourceBundle: '5.0',
+  power: {all: '36,544', on: '11,600', off: '24,944'},
+  sales: '346,572.15',
+  unit: '¥',
+  selected: false
 }
+dataSource.push({})
+dataSource.push(Object.assign( {id: 1}, defaultData))
+dataSource.push(Object.assign( {id: 2}, defaultData))
+dataSource.push(Object.assign( {id: 3}, defaultData))
+dataSource.push(Object.assign({id: 1}, aliData))
+dataSource.push(Object.assign({id: 2}, aliData))
+dataSource.push(Object.assign({id: 3}, aliData))
+dataSource.push(Object.assign({id: 1}, huaweiData))
+dataSource.push(Object.assign({id: 2}, huaweiData))
+dataSource.push(Object.assign({id: 1}, txData))
+dataSource.push(Object.assign({id: 2}, txData))
+
+const fields = ['title', 'des', 'dataCenters']
 
 export default {
   name: 'SuperManagement',
   data () {
     return {
-      dataSource
+      dataSource,
+      visible: false,
+      formLayout: {
+          labelCol: {
+            xs: { span: 24 },
+            sm: { span: 7 }
+          },
+          wrapperCol: {
+            xs: { span: 24 },
+            sm: { span: 13 }
+          }
+        },
+      form: this.$form.createForm(this)
     }
   },
   methods: {
@@ -104,19 +148,31 @@ export default {
       dataSource.forEach(d => {
         d.selected = d.id === item.id
       })
-      if (!item.id) {
-        dataSource.push({
-          id: dataSource.length + 1,
-          title: `直营店${dataSource.length + 1}`,
-          des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
-          dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
-          resourceBundle: '5.0',
-          power: {all: '', on: '', off: ''},
-          sales: '346,572.15',
-          unit: '¥',
-          selected: false
-        })
+      if (!item.title) {
+        this.handleAdd();
       }
+    },
+    handleAdd () {
+      this.visible = true
+    },
+    handleOk () {
+      const formValue = this.form.getFieldsValue(fields);
+      dataSource.splice(1, 0, {
+        title: formValue.title,
+        des: formValue.des,
+        dataCenters: formValue.dataCenters,
+        resourceBundle: '5.0',
+        power: {all: '3,067,588', on: '123,346', off: '2,944,242'},
+        sales: '646,572.15',
+        unit: '¥',
+        selected: false
+      })
+      this.visible = false
+      this.form.resetFields()
+    },
+    handleCancel () {
+      this.visible = false
+      this.form.resetFields()
     }
   }
 }
@@ -182,6 +238,16 @@ export default {
     padding-right: 30px !important;
     .ant-list-item {
       padding: 20px 0;
+    }
+  }
+  :deep(.ant-card) {
+    min-height: 411px;
+    height: 411px;
+    .ant-card-meta-description {
+      &::-webkit-scrollbar { width: 0 !important }
+      overflow: -moz-scrollbars-none;
+      max-height: 360px;
+      overflow-y: auto;
     }
   }
   :deep(.ant-card-body:hover) {
