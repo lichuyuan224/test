@@ -381,12 +381,12 @@ export const asyncRouterMap = [
           {
             path: '/my-request/workspace',
             name: 'workspace',
-            component: () => import('@/views/list/TableList'),
+            component: () => import('@/views/big-screen'),
             meta: { title: '工作台',}
           },{
             path: '/my-request/request-list',
             name: 'request-list',
-            component: () => import('@/views/list/TableList'),
+            component: () => import('@/views/big-screen'),
             meta: { title: '工单列表',}
           },
         ]

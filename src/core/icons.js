@@ -14,5 +14,7 @@ import jiankongdapan from '@/assets/jiankongdapan.png?inline'
 import ziyuanzhuangtaitu from '@/assets/ziyuanzhuangtaitu.png?inline'
 import gaojinggailan from '@/assets/gaojinggailan.png?inline'
 import aliyundashboard from '@/assets/aliyundashboard.png?inline'
+import gongzuotai from '@/assets/gongzuotai.png?inline'
+import quanbugongdan from '@/assets/quanbugongdan.png?inline'
 
-export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard }
+export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard, gongzuotai, quanbugongdan }
