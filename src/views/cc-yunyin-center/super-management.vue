@@ -13,7 +13,7 @@
         </a-button>
       </template>
       <template v-else>
-        <a-card :hoverable="true" :class="{'cc-selected': item.selected}">
+        <a-card :hoverable="true" :class="{'cc-selected': item.selected}" @click="toDc">
           <a-card-meta>
             <a slot="title">{{ item.title + (item.index || '') }}</a>
             <div class="meta-content" slot="description">{{ item.des }}</div>
@@ -212,6 +212,14 @@ export default {
     },
     handleAdd () {
       this.visible = true
+    },
+    toDc() {
+      if (this.$route.path === '/operations/basic-list') {
+        this.$router.push('/yunyinOperations/data-center')
+      }
+      if (this.$route.path === '/my-shop') {
+        this.$router.push('/my-center')
+      }
     },
     handleOk () {
       const formValue = this.form.getFieldsValue(fields);

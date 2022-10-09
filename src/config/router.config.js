@@ -22,12 +22,6 @@ export const asyncRouterMap = [
         meta: { title: '指挥中心大屏'}
       },
       {
-        path: '/yunyinOperations/data-center',
-        component: () => import('@/views/cc-yunwei-center/data-center'),
-        name: 'yunyinDataCenter',
-        meta: { title: '数据中心'}
-      },
-      {
         path: '/operations',
         name: 'operations',
         component: RouteView,
@@ -52,6 +46,12 @@ export const asyncRouterMap = [
             meta: { title: '上架超算算力商品',}
           }
         ]
+      },
+      {
+        path: '/yunyinOperations/data-center',
+        component: () => import('@/views/cc-yunwei-center/data-center'),
+        name: 'yunyinDataCenter',
+        meta: { title: '数据中心'}
       },
       {
         path: '/rb',
