@@ -16,6 +16,7 @@ export default {
   'layout': 'sidemenu',
   'contentWidth': 'Fluid',
   'primaryColor': '#02A04E',
+  'color': '#02A04E',
   'fixedHeader': false,
   'fixSiderbar': false,
   'hideHintAlert': false,
