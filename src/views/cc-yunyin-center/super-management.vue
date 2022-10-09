@@ -144,7 +144,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.path === '/my-rb') {
+    if (this.$route.path === '/my-shop') {
       this.dataSource = [
         {},
         {
