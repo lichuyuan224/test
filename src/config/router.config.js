@@ -354,7 +354,7 @@ export const asyncRouterMap = [
       {
         path: '/my-shop',
         name: 'my-shop',
-        component: () => import('@/views/list/TableList'),
+        component: () => import('@/views/cc-yunyin-center/super-management'),
         meta: { title: '我的商铺', icon: 'table', permission: ['table'] }
       },{
         path: '/my-center',
@@ -364,7 +364,7 @@ export const asyncRouterMap = [
       },{
         path: '/my-rb',
         name: 'my-rb',
-        component: () => import('@/views/cc-yunyin-center/super-management'),
+        component: () => import('@/views/list/TableList'),
         meta: { title: '我的资源池', icon: 'table', permission: ['table'] }
       },{
         path: '/my-product',
