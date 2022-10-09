@@ -143,9 +143,49 @@ export default {
       form: this.$form.createForm(this)
     }
   },
+  mounted() {
+    if (this.$route.path === '/my-rb') {
+      this.dataSource = [
+        {},
+        {
+          id: 1,
+          title: '阿里云',
+          des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
+          dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
+          resourceBundle: '5.0',
+          power: {all: '36,544', on: '11,600', off: '24,944'},
+          sales: '346,572.15',
+          unit: '¥',
+          selected: false
+        },
+        {
+          id: 2,
+          title: '阿里云',
+          des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
+          dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
+          resourceBundle: '5.0',
+          power: {all: '36,544', on: '11,600', off: '24,944'},
+          sales: '346,572.15',
+          unit: '¥',
+          selected: false
+        },
+        {
+          id: 3,
+          title: '阿里云',
+          des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
+          dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
+          resourceBundle: '5.0',
+          power: {all: '36,544', on: '11,600', off: '24,944'},
+          sales: '346,572.15',
+          unit: '¥',
+          selected: false
+        }
+      ]
+    }
+  },
   methods: {
     select (item) {
-      dataSource.forEach(d => {
+      this.dataSource.forEach(d => {
         d.selected = d.id === item.id
       })
       if (!item.title) {
@@ -157,7 +197,7 @@ export default {
     },
     handleOk () {
       const formValue = this.form.getFieldsValue(fields);
-      dataSource.splice(1, 0, {
+      this.dataSource.splice(1, 0, {
         title: formValue.title,
         des: formValue.des,
         dataCenters: formValue.dataCenters,

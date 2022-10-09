@@ -104,7 +104,7 @@
 <script>
 import { ccIconPer } from '@/core/icons'
 
-const dataSource = [
+let dataSource = [
   {
     id: 1,
     title: '和林格尔数据中心1',
@@ -126,7 +126,7 @@ const dataSource = [
   },
   {
     id: 3,
-    title: '阿里云数据中心',
+    title: '阿里云数据中心1',
     selected: false,
     number: {room: 30, box: 108, vm: 102356, switch: 300, gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
     bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
@@ -137,7 +137,56 @@ const dataSource = [
   },
   {
     id: 4,
-    title: '华为云数据中心',
+    title: '阿里云数据中心2',
+    selected: false,
+    number: {room: 30, box: 108, vm: 102356, switch: 300, gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
+    bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '阿里云资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '阿里云资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '阿里云资源池3', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+  },
+  {
+    id: 5,
+    title: '阿里云数据中心3',
+    selected: false,
+    number: {room: 30, box: 108, vm: 102356, switch: 300, gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
+    bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '阿里云资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '阿里云资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '阿里云资源池3', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+  },
+  {
+    id: 6,
+    title: '华为云数据中心1',
+    selected: false,
+    number: {room: 300, box: 10000, vm: 3002450, switch: 3050, gpu: 6, vcpu: 256, mem: 1024, disk: 6000, bandwidth: 3000, delay: 16},
+    bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '华为云资源池', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+  },
+  {
+    id: 7,
+    title: '华为云数据中心2',
+    selected: false,
+    number: {room: 300, box: 10000, vm: 3002450, switch: 3050, gpu: 6, vcpu: 256, mem: 1024, disk: 6000, bandwidth: 3000, delay: 16},
+    bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '华为云资源池', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+  },
+  {
+    id: 8,
+    title: '腾讯云数据中心1',
+    selected: false,
+    number: {room: 300, box: 10000, vm: 3002450, switch: 3050, gpu: 6, vcpu: 256, mem: 1024, disk: 6000, bandwidth: 3000, delay: 16},
+    bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: '华为云资源池', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+      {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+  },
+  {
+    id: 9,
+    title: '腾讯云数据中心2',
     selected: false,
     number: {room: 300, box: 10000, vm: 3002450, switch: 3050, gpu: 6, vcpu: 256, mem: 1024, disk: 6000, bandwidth: 3000, delay: 16},
     bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
@@ -154,11 +203,46 @@ export default {
     }
   },
   mounted() {
-    this.select(dataSource[0])
+    if (this.$route.path === '/my-center') {
+      this.dataSource = [{
+        id: 3,
+        title: '阿里云数据中心1',
+        selected: false,
+        number: {room: 30, box: 108, vm: 102356, switch: 300, gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
+        bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+          {title: '阿里云资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+          {title: '阿里云资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+          {title: '阿里云资源池3', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+          {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+      },
+        {
+          id: 4,
+          title: '阿里云数据中心2',
+          selected: false,
+          number: {room: 30, box: 108, vm: 102356, switch: 300, gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
+          bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: '阿里云资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: '阿里云资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: '阿里云资源池3', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+        },
+        {
+          id: 5,
+          title: '阿里云数据中心3',
+          selected: false,
+          number: {room: 30, box: 108, vm: 102356, switch: 300, gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
+          bundles: [{title: '高性能计算资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: '阿里云资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: '阿里云资源池2', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: '阿里云资源池3', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}},
+            {title: 'GPU资源池1', des: '高性能计算资源池1描述说明高性能计算资源池1描述说明', power: {all: '200305', on: '77654', off: '122,651'}}]
+        },]
+    }
+    this.select(this.dataSource[0])
   },
   methods: {
     select (item) {
-      dataSource.forEach(d => {
+      this.dataSource.forEach(d => {
         d.selected = d.id === item.id
       });
       this.selectData = item;

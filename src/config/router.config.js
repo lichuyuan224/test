@@ -359,12 +359,12 @@ export const asyncRouterMap = [
       },{
         path: '/my-center',
         name: 'my-center',
-        component: () => import('@/views/list/TableList'),
+        component: () => import('@/views/cc-yunwei-center/data-center'),
         meta: { title: '我的数据中心', icon: 'table', permission: ['table'] }
       },{
         path: '/my-rb',
         name: 'my-rb',
-        component: () => import('@/views/list/TableList'),
+        component: () => import('@/views/cc-yunyin-center/super-management'),
         meta: { title: '我的资源池', icon: 'table', permission: ['table'] }
       },{
         path: '/my-product',
