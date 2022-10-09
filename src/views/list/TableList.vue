@@ -25,17 +25,15 @@
           </a-select>
         </a-col>
         <a-col :span="4">
-          <a-date-picker placeholder="执行时间" style="width: 250px"/>
+          <a-date-picker placeholder="执行时间" style="width: 250px" />
         </a-col>
         <a-col :span="4">
-          <a-input placeholder="搜索..." allow-clear style="width: 250px"/>
+          <a-input placeholder="搜索..." allow-clear style="width: 250px" />
         </a-col>
         <a-col :span="2" :offset="6" v-if="createRight">
           <a-button type="primary" @click="handleAdd">快速创建</a-button>
         </a-col>
       </a-row>
-
-
 
 
     </div>
@@ -71,7 +69,7 @@
       @cancel="handleCancel"
       @ok="handleOk"
     />
-    <step-by-step-modal ref="modal" @ok="handleOk"/>
+    <step-by-step-modal ref="modal" @ok="handleOk" />
   </a-card>
 </template>
 
@@ -110,7 +108,7 @@ export default {
     CreateForm,
     StepByStepModal
   },
-  data () {
+  data() {
     return {
       // create model
       visible: false,
@@ -133,51 +131,22 @@ export default {
       },
       selectedRowKeys: [],
       selectedRows: [],
-      columns: [
-        {
-          title: '名称',
-          dataIndex: 'no',
-          scopedSlots: { customRender: 'name' }
-        },
-        {
-          title: '描述',
-          dataIndex: 'description',
-          scopedSlots: { customRender: 'description' }
-        },
-        {
-          title: '状态',
-          dataIndex: 'status',
-          scopedSlots: { customRender: 'status' }
-        }, {
-          title: '类型',
-          dataIndex: 'type',
-        },
-        {
-          title: '更新时间',
-          dataIndex: 'updatedAt',
-          sorter: true
-        },
-        {
-          title: '创建时间',
-          dataIndex: 'createdAt',
-          sorter: true
-        }
-      ]
+      columns: []
     }
   },
   filters: {
-    statusFilter (type) {
+    statusFilter(type) {
       return statusMap[type].text
     },
-    statusTypeFilter (type) {
+    statusTypeFilter(type) {
       return statusMap[type].status
     }
   },
-  created () {
+  created() {
     getRoleList({ t: new Date() })
   },
   computed: {
-    rowSelection () {
+    rowSelection() {
       return {
         selectedRowKeys: this.selectedRowKeys,
         onChange: this.onSelectChange
@@ -185,15 +154,15 @@ export default {
     }
   },
   methods: {
-    handleAdd () {
+    handleAdd() {
       this.mdl = null
       this.visible = true
     },
-    handleEdit (record) {
+    handleEdit(record) {
       this.visible = true
       this.mdl = { ...record }
     },
-    handleOk () {
+    handleOk() {
       const form = this.$refs.createModal.form
       this.confirmLoading = true
       form.validateFields((errors, values) => {
@@ -237,27 +206,27 @@ export default {
         }
       })
     },
-    handleCancel () {
+    handleCancel() {
       this.visible = false
 
       const form = this.$refs.createModal.form
       form.resetFields() // 清理表单数据（可不做）
     },
-    handleSub (record) {
+    handleSub(record) {
       if (record.status !== 0) {
         this.$message.info(`${record.no} 订阅成功`)
       } else {
         this.$message.error(`${record.no} 订阅失败，规则已关闭`)
       }
     },
-    onSelectChange (selectedRowKeys, selectedRows) {
+    onSelectChange(selectedRowKeys, selectedRows) {
       this.selectedRowKeys = selectedRowKeys
       this.selectedRows = selectedRows
     },
-    toggleAdvanced () {
+    toggleAdvanced() {
       this.advanced = !this.advanced
     },
-    resetSearchForm () {
+    resetSearchForm() {
       this.queryParam = {
         date: moment(new Date())
       }
@@ -265,11 +234,161 @@ export default {
   },
   mounted() {
     this.createRight = this.$route.path === '/dispatch'
-    if (this.$route.path === '/operations/basic-list') {
-      // this.columns.push({
-      //   title: '测试',
-      //   dataIndex: 'test',
-      // })
+    if (this.$route.path === '/rb') {
+      this.columns.push(...[
+        {
+          title: '名称',
+          dataIndex: 'no',
+          scopedSlots: { customRender: 'name' }
+        },
+        {
+          title: '描述',
+          dataIndex: 'description',
+          scopedSlots: { customRender: 'description' }
+        },
+        {
+          title: '总算力(MFLOPS)',
+          dataIndex: 'calculateForce'
+        }, {
+          title: 'GPU(卡)',
+          dataIndex: 'gpu'
+        }, {
+          title: 'VCPU(核)',
+          dataIndex: 'cpu'
+        }, {
+          title: '存储(TB)',
+          dataIndex: 'storage'
+        }, {
+          title: '内存(GB)',
+          dataIndex: 'memory'
+        }, {
+          title: '带宽(Mb/s)',
+          dataIndex: 'bandwidth'
+        }, {
+          title: '延迟(ms)',
+          dataIndex: 'delay'
+        }, {
+          title: '是否上架',
+          dataIndex: 'published'
+        },
+        {
+          title: '更新时间',
+          dataIndex: 'updatedAt',
+          sorter: true
+        },
+        {
+          title: '创建时间',
+          dataIndex: 'createdAt',
+          sorter: true
+        }])
+    } else if (this.$route.path === '/operations/basic-list4') {
+      this.columns.push(...[
+        {
+          title: '商品ID',
+          dataIndex: 'id'
+        }, {
+          title: '类型',
+          dataIndex: 'productType'
+        },
+        {
+          title: '名称',
+          dataIndex: 'productName',
+          scopedSlots: { customRender: 'name' }
+        },
+        {
+          title: '描述',
+          dataIndex: 'productDesc',
+          scopedSlots: { customRender: 'description' }
+        }, {
+          title: 'VCPU(核)',
+          dataIndex: 'cpu'
+        }, {
+          title: '内存(GB)',
+          dataIndex: 'memory'
+        }, {
+          title: '显存(GB)',
+          dataIndex: '100'
+        }, {
+          title: '显存数量',
+          dataIndex: '10'
+        }, {
+          title: '资源池',
+          dataIndex: 'rbs'
+        }, {
+          title: '数据中心',
+          dataIndex: 'centers'
+        }, {
+          title: '是否上架',
+          dataIndex: 'published'
+        }, {
+          title: '库存数量',
+          dataIndex: '100v2'
+        },
+        {
+          title: '上架时间',
+          dataIndex: 'createdAt',
+          sorter: true
+        }])
+    } else if (this.$route.path === '/discountmanagement/basic-list') {
+      this.columns.push(...[
+        {
+          title: '名称',
+          dataIndex: 'discountName',
+          scopedSlots: { customRender: 'name' }
+        }, {
+          title: '类型',
+          dataIndex: 'cpu'
+        }, {
+          title: '序列号',
+          dataIndex: 'memory'
+        }, {
+          title: '超算供应商',
+          dataIndex: '100'
+        }, {
+          title: '生效时间',
+          dataIndex: '10'
+        }, {
+          title: '规则',
+          dataIndex: 'rbs'
+        }, {
+          title: '商品范围',
+          dataIndex: 'centers'
+        },
+        {
+          title: '发布时间',
+          dataIndex: 'createdAt',
+          sorter: true
+        }])
+    } else {
+      this.columns.push(...[
+        {
+        title: '名称',
+        dataIndex: 'no',
+        scopedSlots: { customRender: 'name' }
+      },
+        {
+          title: '描述',
+          dataIndex: 'description',
+          scopedSlots: { customRender: 'description' }
+        },
+        {
+          title: '状态',
+          dataIndex: 'status',
+          scopedSlots: { customRender: 'status' }
+        }, {
+          title: '类型',
+          dataIndex: 'type'
+        },
+        {
+          title: '更新时间',
+          dataIndex: 'updatedAt',
+          sorter: true
+        },
+        {
+          title: '创建时间',
+          dataIndex: 'createdAt',
+          sorter: true
+        }])
     }
   }
 }
