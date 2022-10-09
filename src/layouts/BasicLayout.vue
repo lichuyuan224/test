@@ -19,7 +19,7 @@
           我们推荐使用这种方式进行 LOGO 和 title 自定义
     -->
     <template v-slot:menuHeaderRender>
-      <div>
+      <div v-if="!isSupplier">
         <img src="@/assets/helin-logo.png" style="height: 44px;width: 70px"/>
         <a-dropdown>
           <span class="ant-dropdown-link" @click.prevent>
@@ -49,6 +49,10 @@
             </a-menu>
           </template>
         </a-dropdown>
+      </div>
+      <div v-if='isSupplier'>
+        <img src="@/assets/helin-logo.png" style="height: 44px;width: 70px"/>
+        <span style='padding-left: 30px;'>超算供应商管理</span>
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,
@@ -127,7 +131,8 @@ export default {
 
       // 是否手机模式
       isMobile: false,
-      center: '运营中心'
+      center: '运营中心',
+      isSupplier: false,
     }
   },
   computed: {
@@ -140,22 +145,45 @@ export default {
     }
   },
   created () {
-
+    console.log(this.$route.path)
+    this.isSupplier = [
+      '/my-shop',
+      '/my-center',
+      '/my-rb',
+      '/my-product',
+      '/my-request/workspace',
+      '/my-request/request-list',
+      '/my-activity',
+      '/my-discount'
+    ].includes(this.$route.path);
     const routes = asyncRouterMap.find(item => item.path === '/')
-    this.menus = ((routes && routes.children) || []).filter(c => ['productapproval',
-      'operateBigScreen',
-      'productcapacitymanagement',
-      'aisystem',
-      'discountmanagement',
-      'activitymanagement',
-      'admanagement',
-      'resourcemanagement',
-      'statistics',
-      'dispatchcenter',
-      'hashratebilling',
-      'compliance',
-      'workordermanagement',
-      'operations'].includes(c.name))
+    if (this.isSupplier) {
+      this.menus = ((routes && routes.children) || []).filter(c => [
+        'my-shop',
+        'my-center',
+        'my-rb',
+        'my-product',
+        'my-request',
+        'my-activity',
+        'my-discount'
+      ].includes(c.name))
+    } else {
+      this.menus = ((routes && routes.children) || []).filter(c => ['productapproval',
+        'operateBigScreen',
+        'productcapacitymanagement',
+        'aisystem',
+        'discountmanagement',
+        'activitymanagement',
+        'admanagement',
+        'resourcemanagement',
+        'statistics',
+        'dispatchcenter',
+        'hashratebilling',
+        'compliance',
+        'workordermanagement',
+        'operations'].includes(c.name))
+    }
+
     // 处理侧栏收起状态
     this.$watch('collapsed', () => {
       this.$store.commit(SIDEBAR_TYPE, this.collapsed)
