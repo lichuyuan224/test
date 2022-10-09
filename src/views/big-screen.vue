@@ -6,7 +6,7 @@
 </template>
 <script>
 
-import { yunyinBigscreen, yunweiBigscreen, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard, gongzuotai, quanbugongdan } from '@/core/icons'
+import { yunyinBigscreen, yunweiBigscreen, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard, gongzuotai, quanbugongdan, zhangdanguanli } from '@/core/icons'
 
 export default {
   data () {
@@ -25,6 +25,7 @@ export default {
         '/monitor/show-pic4': aliyundashboard,
         '/my-request/workspace': gongzuotai,
         '/my-request/request-list': quanbugongdan,
+        '/pay': zhangdanguanli,
       }
       this.imgUrl = routerPathMap[this.$route.path]
       if(this.$route.path && this.$route.path.indexOf('bigScreen') > -1) {

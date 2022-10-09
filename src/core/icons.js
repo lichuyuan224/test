@@ -17,5 +17,6 @@ import aliyundashboard from '@/assets/aliyundashboard.png?inline'
 import gongzuotai from '@/assets/gongzuotai.png?inline'
 import quanbugongdan from '@/assets/quanbugongdan.png?inline'
 import diaodutongji from '@/assets/diaodutongji.jpg?inline'
+import zhangdanguanli from '@/assets/zhangdanguanli.jpg?inline'
 
-export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard, gongzuotai, quanbugongdan, diaodutongji }
+export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard, gongzuotai, quanbugongdan, diaodutongji,zhangdanguanli }

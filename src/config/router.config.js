@@ -618,8 +618,8 @@ export const asyncRouterMap = [
       {
         path: '/pay',
         name: 'pay',
-        component: () => import('@/views/list/TableList'),
-        meta: { title: '支付网关', icon: 'table', permission: ['table'] },
+        component: () => import('@/views/big-screen'),
+        meta: { title: '账单管理', icon: 'table', permission: ['table'] },
       },{
         path: '/pay1',
         name: 'pay1',
@@ -644,7 +644,7 @@ export const asyncRouterMap = [
         path: '/pay5',
         name: 'pay5',
         component: () => import('@/views/list/TableList'),
-        meta: { title: '账单管理', icon: 'table', permission: ['table'] },
+        meta: { title: '支付网关', icon: 'table', permission: ['table'] },
       },{
         path: '/pay6',
         name: 'pay6',
