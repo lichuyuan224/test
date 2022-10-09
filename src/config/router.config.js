@@ -48,6 +48,12 @@ export const asyncRouterMap = [
         ]
       },
       {
+        path: '/rb',
+        name: 'rb',
+        component: () => import('@/views/list/TableList'),
+        meta: { title: '资源池', icon: 'table', permission: ['table'] }
+      },
+      {
         path: '/productapproval',
         name: 'productapproval',
         component: RouteView,
@@ -433,12 +439,6 @@ export const asyncRouterMap = [
             meta: { title: '云产品',}
           },
         ]
-      },
-      {
-        path: '/rb',
-        name: 'rb',
-        component: () => import('@/views/list/TableList'),
-        meta: { title: '资源池', icon: 'table', permission: ['table'] }
       },
       {
         path: '/params',

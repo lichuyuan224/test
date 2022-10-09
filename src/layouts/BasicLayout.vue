@@ -179,6 +179,7 @@ export default {
         'statistics',
         'dispatchcenter',
         'hashratebilling',
+        'rb',
         'compliance',
         'workordermanagement',
         'operations'].includes(c.name))
@@ -219,6 +220,7 @@ export default {
           'productapproval',
           'productcapacitymanagement',
           'aisystem',
+          'rb',
           'discountmanagement',
           'activitymanagement',
           'admanagement',
@@ -233,7 +235,7 @@ export default {
         '运维中心': [
           'devopsBigScreen',
           'dataCenter',
-          'om', 'rb',
+          'om', 
           'params',
           'orginazation',
           'product',
