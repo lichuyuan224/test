@@ -170,6 +170,7 @@ export default {
     } else {
       this.menus = ((routes && routes.children) || []).filter(c => ['productapproval',
         'operateBigScreen',
+        'yunyinDataCenter',
         'productcapacitymanagement',
         'aisystem',
         'discountmanagement',
@@ -217,6 +218,7 @@ export default {
       const a = {
         '运营中心': [
           'operateBigScreen',
+          'yunyinDataCenter',
           'productapproval',
           'productcapacitymanagement',
           'aisystem',

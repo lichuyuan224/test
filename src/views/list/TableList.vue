@@ -141,6 +141,8 @@ export default {
               requestParameters.totalCount = 8
             }else if(this.$route.path === '/monitor/basic-list2' || this.$route.path === '/monitor/basic-list3') {
               requestParameters.totalCount = 4
+            }else if(this.$route.path === '/rb' || this.$route.path === '/my-rb') {
+              requestParameters.totalCount = 9
             }else {
               requestParameters.totalCount = null
             }
@@ -261,13 +263,8 @@ export default {
       this.columns.push(...[
         {
           title: '名称',
-          dataIndex: 'no',
+          dataIndex: 'rbName',
           scopedSlots: { customRender: 'name' }
-        },
-        {
-          title: '描述',
-          dataIndex: 'description',
-          scopedSlots: { customRender: 'description' }
         },
         {
           title: '总算力(MFLOPS)',
@@ -512,7 +509,7 @@ export default {
 </script>
 <style lang="less" scoped>
   :deep(.img-box.ant-card) {
-    .ant-card-body {
+    .ant-card-body { 
       padding:0;
     }
   }

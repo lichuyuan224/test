@@ -105,6 +105,20 @@ Random.extend({
                           ]
     return constellations[data] ? constellations[data] : this.pick(constellations)
   },
+  rbName: function(data) {
+    const constellations = [
+                            '高性能计算资源池1', 
+                            '高性能计算资源池2', 
+                            'GPU资源池1', 
+                            '阿里云资源池1',
+                            '阿里云资源池2', 
+                            '阿里云资源池3', 
+                            'GPU资源池2', 
+                            '华为云资源池',
+                            '腾讯云资源池'
+                          ]
+    return constellations[data] ? constellations[data] : this.pick(constellations)
+  },
 })
 let totalCount = 5701
 const api = {
@@ -198,6 +212,7 @@ export function getServiceList (parameter) {
       alartInclude: '全部业务组',
       alartObj: '全部云主机',
       alartStatus: '启用',
+      rbName: Random.rbName(i - 1),
       supplier: Random.supplier(),
       validRange: Mock.mock('@date') + ' - ' + Mock.mock('@date'),
       rbs: Random.rbs(),

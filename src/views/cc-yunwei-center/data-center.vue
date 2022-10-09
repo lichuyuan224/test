@@ -82,7 +82,7 @@
         class="card-list"
       >
         <a-list-item slot="renderItem" slot-scope="item">
-          <a-card :hoverable="true">
+          <a-card :hoverable="true" @click="toRb">
               <a-card-meta>
                 <a slot="title">{{ item.title }}</a>
                 <div class="meta-content" slot="description">{{ item.des }}</div>
@@ -246,6 +246,11 @@ export default {
         d.selected = d.id === item.id
       });
       this.selectData = item;
+    },
+    toRb() {
+      if (this.$route.path === '/yunyinOperations/data-center') {
+        this.$router.push('/rb')
+      }
     }
   }
 }
