@@ -17,28 +17,36 @@
           <a-card-meta>
             <a slot="title">{{ item.title + (item.index || '') }}</a>
             <div class="meta-content" slot="description">{{ item.des }}</div>
-            <div class="cc-card" slot="description">
-              <div class="label">数据中心</div>
-              <ul class="content dataCenters">
-                <li v-for="(center, index) in item.dataCenters">{{ center }}</li>
-              </ul>
-            </div>
-            <div class="cc-card" slot="description">
-              <div class="label">
-                <div>资源池</div>
-                <i class="resourceBundle">{{ item.resourceBundle }}</i>
+            <div class='overfolw-cc' slot="description">
+              <div class="cc-card" slot="description">
+                <div class="label">数据中心</div>
+                <ul class="content dataCenters">
+                  <li v-for="(center, index) in item.dataCenters">{{ center }}</li>
+                </ul>
               </div>
-              <ul class="content">
-                <li v-for="(powerInfo, index) in item.power">
-                  <span v-if="index === 'all'">总算力：{{ powerInfo }} MFLOPS</span>
-                  <span v-if="index === 'on'">已售算力：{{ powerInfo }}</span>
-                  <span v-if="index === 'off'">剩余算力：{{ powerInfo }}</span>
-                </li>
-              </ul>
+              <div class="cc-card" slot="description">
+                <div class="label">
+                  <div>资源池</div>
+                  <i class="resourceBundle">{{ item.resourceBundle }}</i>
+                </div>
+                <ul class="content">
+                  <li v-for="(powerInfo, index) in item.power">
+                    <span v-if="index === 'all'">总算力：{{ powerInfo }} MFLOPS</span>
+                    <span v-if="index === 'on'">已售算力：{{ powerInfo }}</span>
+                    <span v-if="index === 'off'">剩余算力：{{ powerInfo }}</span>
+                  </li>
+                  <li>GPU：{{ item.num.gpu }} 卡</li>
+                  <li>VCPU：{{ item.num.vcpu }} 核</li>
+                  <li>存储：{{ item.num.mem }} GB</li>
+                  <li>带宽：{{ item.num.bandwidth }} M</li>
+                  <li>延迟：{{ item.num.delay }} ms</li>
+                </ul>
+              </div>
             </div>
+
             <div class="cc-card" slot="description">
               <div class="label line-height-2">总销售额</div>
-              <div class="content pad40L"><span class="unit">{{ item.unit }}</span> {{ item.sales }}</div>
+              <div class="content pad40L green-font"><span class="unit">{{ item.unit }}</span> {{ item.sales }}</div>
             </div>
           </a-card-meta>
         </a-card>
@@ -75,6 +83,7 @@ const defaultData = {
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
   resourceBundle: '5.0',
+  num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
   power: {all: '200,305', on: '77,654', off: '122,651'},
   sales: '346,742.99',
   unit: '¥',
@@ -85,6 +94,7 @@ const aliData = {
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
   resourceBundle: '5.0',
+  num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
   power: {all: '36,544', on: '11,600', off: '24,944'},
   sales: '346,572.15',
   unit: '¥',
@@ -95,6 +105,7 @@ const huaweiData = {
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['华为云数据中心1', '华为云数据中心2'],
   resourceBundle: '5.0',
+  num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
   power: {all: '19,343', on: '8,001', off: '11,342'},
   sales: '266,990.03',
   unit: '¥',
@@ -105,6 +116,7 @@ const txData = {
   des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
   dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
   resourceBundle: '5.0',
+  num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
   power: {all: '36,544', on: '11,600', off: '24,944'},
   sales: '346,572.15',
   unit: '¥',
@@ -154,6 +166,7 @@ export default {
           des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
           dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
           resourceBundle: '5.0',
+          num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
           power: {all: '36,544', on: '11,600', off: '24,944'},
           sales: '346,572.15',
           unit: '¥',
@@ -166,6 +179,7 @@ export default {
           des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
           dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
           resourceBundle: '5.0',
+          num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
           power: {all: '36,544', on: '11,600', off: '24,944'},
           sales: '346,572.15',
           unit: '¥',
@@ -178,6 +192,7 @@ export default {
           des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
           dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
           resourceBundle: '5.0',
+          num: {gpu: 4, vcpu: 128, mem: 256, disk: 3000, bandwidth: 3000, delay: 33},
           power: {all: '36,544', on: '11,600', off: '24,944'},
           sales: '346,572.15',
           unit: '¥',
@@ -205,6 +220,7 @@ export default {
         des: formValue.des,
         dataCenters: formValue.dataCenters,
         resourceBundle: '5.0',
+        num: {gpu: 8, vcpu: 128, mem: 1024, disk: 3000, bandwidth: 3000, delay: 13},
         power: {all: '3,067,588', on: '123,346', off: '2,944,242'},
         sales: '646,572.15',
         unit: '¥',
@@ -237,10 +253,12 @@ export default {
   border-color: @theme-color !important;
   color: @theme-color;
 }
+.green-font {
+  color: @theme-color !important;
+  font-size: 20px;
+}
 .pad40L {
   padding-left: 40px;
-  color: @theme-color !important;
-  font-size: 18px;
   .unit{
     font-size: 14px;
   }
@@ -284,14 +302,20 @@ export default {
     }
   }
   :deep(.ant-card) {
-    min-height: 411px;
     height: 411px;
-    .ant-card-meta-description {
-      &::-webkit-scrollbar { width: 0 !important }
+    .overfolw-cc {
+      height: 224px;
+      &.overfolw-cc::-webkit-scrollbar { width: 0 !important }
       overflow: -moz-scrollbars-none;
-      max-height: 360px;
       overflow-y: auto;
     }
+
+    //.ant-card-meta-description {
+    //  &::-webkit-scrollbar { width: 0 !important }
+    //  overflow: -moz-scrollbars-none;
+    //  max-height: 360px;
+    //  overflow-y: auto;
+    //}
   }
   :deep(.ant-card-body:hover) {
     .ant-card-meta-title>a {
