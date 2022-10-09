@@ -42,9 +42,64 @@ Random.extend({
   supplier: function(date) {
     const constellations = ['阿里云', '直营店1', '直营店2', '直营店3']
     return this.pick(constellations)
-  }
+  },
+  dashboardName: function(data) {
+    const constellations = [
+      '阿里云云主机监控仪表盘', 
+      '阿里云Load Balancer监控仪表盘', 
+      '阿里云Redis监控仪表盘', 
+      '腾讯云云主机监控仪表盘', 
+      '腾讯云Redis监控仪表盘', 
+      '华为公有云云主机监控仪表盘', 
+      '华为云 MySQL监控仪表盘', 
+      '华为云 Load Balancer监控仪表盘']
+    return constellations[data] ? constellations[data] : this.pick(constellations)
+  },
+  dashboardDes: function(data) {
+    const constellations = [
+                            '此仪表盘用于展示阿里云云主机监控数据，监控中使用的指标来自于阿里云云平台监控API。', 
+                            '此仪表盘用于展示阿里云Load Balancer监控数据，监控中使用的指标来自于阿里云云平台监控API。', 
+                            '此仪表盘用于展示阿里云Redis监控数据，监控中使用的指标来自于阿里云云平台监控API。', 
+                            '此仪表盘用于展示腾讯云云主机监控数据，监控中使用的指标来自于腾讯云云平台监控API。', 
+                            '此仪表盘用于展示腾讯云Redis监控数据，监控中使用的指标来自于腾讯云云平台监控API。', 
+                            '此仪表盘用于展示华为公有云监控数据，监控中使用的指标来自于华为公有平台监控API。', 
+                            '此仪表盘用于展示华为云 MySQL监控数据，监控中使用的指标来自于华为云云平台监控API。', 
+                            '此仪表盘用于展示华为云 Load Balancer监控数据，监控中使用的指标来自于华为云云平台监控API。']
+    return constellations[data] ? constellations[data] : this.pick(constellations)
+  },
+  dashboardType: function(data) {
+    const constellations = [
+                            '阿里云', 
+                            '阿里云', 
+                            '阿里云', 
+                            '腾讯云', 
+                            '腾讯云', 
+                            '华为云', 
+                            '华为云', 
+                            '华为云'
+                          ]
+    return constellations[data] ? constellations[data] : this.pick(constellations)
+  },
+  alartPolicyName: function(data) {
+    const constellations = [
+                            'Windows存储使用率告警策略', 
+                            'Linux存储使用率告警策略', 
+                            '内存使用率告警策略', 
+                            'CPU使用率告警策略'
+                          ]
+    return constellations[data] ? constellations[data] : this.pick(constellations)
+  },
+  alartName: function(data) {
+    const constellations = [
+                            'Windows存储使用率告警', 
+                            'Linux存储使用率告警', 
+                            '内存使用率告警', 
+                            'CPU使用率告警'
+                          ]
+    return constellations[data] ? constellations[data] : this.pick(constellations)
+  },
 })
-const totalCount = 5701
+let totalCount = 5701
 const api = {
   user: '/user',
   role: '/role',
@@ -74,7 +129,11 @@ export function getRoleList (parameter) {
 
 export function getServiceList (parameter) {
   const parameters = parameter
-
+  if(parameters.totalCount) {
+    totalCount = parameters.totalCount
+  }else {
+    totalCount = 5701
+  }
   const result = []
   const pageNo = parseInt(parameters.pageNo)
   const pageSize = parseInt(parameters.pageSize)
@@ -114,6 +173,20 @@ export function getServiceList (parameter) {
       discountName: Random.discountName(),
       discountType: Random.discountType(),
       discountRange: Random.discountRange(),
+      dashboardName: Random.dashboardName(i - 1),
+      dashboardDes: Random.dashboardDes(i - 1),
+      dashboardType: Random.dashboardType(i - 1),
+      dashboardPremission: '业务组：全部业务组',
+      dashboardUser: '系统',
+      alartPolicyName: Random.alartPolicyName(i - 1),
+      resourceType: '云主机',
+      alartPolicyType: '阈值告警',
+      alartPolicyCreator: '系统管理员',
+      alartName: Random.alartName(i - 1),
+      alartLevel: '紧急',
+      alartInclude: '全部业务组',
+      alartObj: '全部云主机',
+      alartStatus: '启用',
       supplier: Random.supplier(),
       validRange: Mock.mock('@date') + ' - ' + Mock.mock('@date'),
       rbs: Random.rbs(),

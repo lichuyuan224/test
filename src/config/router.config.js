@@ -507,7 +507,12 @@ export const asyncRouterMap = [
             name: 'monitor6',
             component: () => import('@/views/list/TableList'),
             meta: { title: '告警',}
-          },
+          },{
+            path: '/monitor/show-pic4',
+            name: 'monitor7',
+            hidden: true,
+            component: () => import('@/views/big-screen')
+          }
         ]
       },
       {

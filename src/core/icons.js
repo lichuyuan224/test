@@ -13,5 +13,6 @@ import ccIconPer from '@/assets/icons/cc-icon-per.png?inline'
 import jiankongdapan from '@/assets/jiankongdapan.png?inline'
 import ziyuanzhuangtaitu from '@/assets/ziyuanzhuangtaitu.png?inline'
 import gaojinggailan from '@/assets/gaojinggailan.png?inline'
+import aliyundashboard from '@/assets/aliyundashboard.png?inline'
 
-export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan }
+export { bxAnaalyse, yunyinBigscreen, yunweiBigscreen, ccIconPer, jiankongdapan, ziyuanzhuangtaitu, gaojinggailan, aliyundashboard }

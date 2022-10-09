@@ -48,7 +48,7 @@ export default {
     },
     renderMenuItem (item) {
       return (
-        <Item key={item.key}>
+        <Item key={item.key} v-show="!item.hidden">
           { this.renderIcon(item.icon) }
           { item.title }
           <a class="btn" style="width: 20px;z-index:1300" {...{ on: { click: () => this.handlePlus(item) } }}><a-icon type="plus"/></a>

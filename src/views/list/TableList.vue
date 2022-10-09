@@ -53,6 +53,9 @@
       <span slot="name" slot-scope="text, record, index">
         <a href="">{{ text }}</a>
       </span>
+      <span slot="dashboardName" slot-scope="text, record, index">
+        <a href="javascript:;" @click="$router.push('/monitor/show-pic4')">{{ text }}</a>
+      </span>
       <span slot="status" slot-scope="text">
         <a-badge :status="text | statusTypeFilter" :text="text | statusFilter" />
       </span>
@@ -122,9 +125,18 @@ export default {
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
         const requestParameters = Object.assign({}, parameter, this.queryParam)
+        
         console.log('loadData request parameters:', requestParameters)
         return new Promise(resolve => {
           setTimeout(() => {
+            if(this.$route.path === '/monitor/basic-list') {
+              requestParameters.totalCount = 8
+            }else if(this.$route.path === '/monitor/basic-list2' || this.$route.path === '/monitor/basic-list3') {
+              requestParameters.totalCount = 4
+            }else {
+              requestParameters.totalCount = null
+            }
+            console.log(111)
             resolve(getServiceList(requestParameters).result)
           }, 1000)
         })
@@ -358,6 +370,80 @@ export default {
           title: '发布时间',
           dataIndex: 'createdAt',
           sorter: true
+        }])
+    } else if (this.$route.path === '/monitor/basic-list2') {
+      this.columns.push(...[
+        {
+          title: '告警策略名称',
+          dataIndex: 'alartPolicyName',
+          scopedSlots: { customRender: 'name' }
+        }, {
+          title: '资源类型',
+          dataIndex: 'resourceType'
+        }, {
+          title: '告警策略类型',
+          dataIndex: 'alartPolicyType'
+        }, {
+          title: '创建者',
+          dataIndex: 'alartPolicyCreator'
+        }, {
+          title: '创建时间',
+          dataIndex: 'createdAt',
+          sorter: true
+        }])
+    } else if (this.$route.path === '/monitor/basic-list3') {
+      this.columns.push(...[
+        {
+          title: '告警名称',
+          dataIndex: 'alartName',
+          scopedSlots: { customRender: 'name' }
+        }, {
+          title: '警报级别',
+          dataIndex: 'alartLevel'
+        }, {
+          title: '告警策略名称',
+          dataIndex: 'alartPolicyName'
+        }, 
+         {
+          title: '告警范围',
+          dataIndex: 'alartInclude'
+        }, 
+         {
+          title: '告警对象',
+          dataIndex: 'alartObj'
+        }, 
+         {
+          title: '状态',
+          dataIndex: 'alartStatus'
+        }, {
+          title: '创建者',
+          dataIndex: 'alartPolicyCreator'
+        }, {
+          title: '创建时间',
+          dataIndex: 'createdAt',
+          sorter: true
+        }])
+    } else if (this.$route.path === '/monitor/basic-list') {
+      this.columns.push(...[
+        {
+          title: '名称',
+          dataIndex: 'dashboardName',
+          scopedSlots: { customRender: 'dashboardName' }
+        }, {
+          title: '描述',
+          dataIndex: 'dashboardDes'
+        }, {
+          title: '云平台类型',
+          dataIndex: 'dashboardType'
+        }, {
+          title: '授权',
+          dataIndex: 'dashboardPremission'
+        }, {
+          title: '创建者',
+          dataIndex: 'dashboardUser'
+        }, {
+          title: '创建时间',
+          dataIndex: 'createdAt'
         }])
     } else {
       this.columns.push(...[
