@@ -106,7 +106,7 @@ data.push({
   }
 })
 data.push({
-  title: '和林格尔多云算力调度平台',
+  title: '聚“和”云购',
   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png',
   description: '城镇中有那么多的酒馆，她却偏偏走进了我的酒馆',
   owner: '周星星',
