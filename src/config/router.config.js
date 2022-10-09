@@ -33,11 +33,6 @@ export const asyncRouterMap = [
             name: 'operations1',
             component: () => import('@/views/cc-yunyin-center/super-management'),
             meta: { title: '超算供应商管理',}
-          },{
-            path: '/operations/basic-list2',
-            name: 'operations2',
-            component: () => import('@/views/list/TableList'),
-            meta: { title: '超算供应商注册',}
           }
           ,{
             path: '/operations/basic-list3',
