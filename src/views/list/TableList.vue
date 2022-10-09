@@ -125,7 +125,7 @@ export default {
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
         const requestParameters = Object.assign({}, parameter, this.queryParam)
-        
+
         console.log('loadData request parameters:', requestParameters)
         return new Promise(resolve => {
           setTimeout(() => {
@@ -246,7 +246,7 @@ export default {
   },
   mounted() {
     this.createRight = this.$route.path === '/dispatch'
-    if (this.$route.path === '/rb') {
+    if (this.$route.path === '/rb' || this.$route.path === '/my-rb') {
       this.columns.push(...[
         {
           title: '名称',
@@ -293,7 +293,7 @@ export default {
           dataIndex: 'createdAt',
           sorter: true
         }])
-    } else if (this.$route.path === '/operations/basic-list4') {
+    } else if (this.$route.path === '/operations/basic-list4' || this.$route.path === '/my-product') {
       this.columns.push(...[
         {
           title: '商品ID',
@@ -341,7 +341,7 @@ export default {
           dataIndex: 'createdAt',
           sorter: true
         }])
-    } else if (this.$route.path === '/discountmanagement/basic-list') {
+    } else if (this.$route.path === '/discountmanagement/basic-list' || this.$route.path === '/my-discount') {
       this.columns.push(...[
         {
           title: '名称',
@@ -370,6 +370,26 @@ export default {
           title: '发布时间',
           dataIndex: 'createdAt',
           sorter: true
+        }])
+    } else if (this.$route.path === '/my-activity') {
+      this.columns.push(...[
+        {
+          title: '名称',
+          dataIndex: 'activityName',
+          scopedSlots: { customRender: 'name' }
+        }, {
+          title: '生效时间',
+          dataIndex: 'validRange'
+        }, {
+          title: '折扣率',
+          dataIndex: 'discountRate'
+        }, {
+          title: '商品范围',
+          dataIndex: 'discountRange'
+        },
+        {
+          title: '状态',
+          dataIndex: 'activityStatus'
         }])
     } else if (this.$route.path === '/monitor/basic-list2') {
       this.columns.push(...[
@@ -403,15 +423,15 @@ export default {
         }, {
           title: '告警策略名称',
           dataIndex: 'alartPolicyName'
-        }, 
+        },
          {
           title: '告警范围',
           dataIndex: 'alartInclude'
-        }, 
+        },
          {
           title: '告警对象',
           dataIndex: 'alartObj'
-        }, 
+        },
          {
           title: '状态',
           dataIndex: 'alartStatus'

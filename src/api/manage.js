@@ -15,6 +15,13 @@ Random.extend({
     const constellations = ['Tesla P4', 'Tesla P100','Tesla P40']
     return this.pick(constellations)
   },
+  activityName: function(date) {
+    const constellations = ['和林格尔日']
+    return this.pick(constellations)
+  },activityStatus: function(date) {
+    const constellations = ['未开始', '进行中', '已过期']
+    return this.pick(constellations)
+  },
   productDesc: function(date) {
     const constellations = ['高性能异构环境，适用小规模AI训练和HPC计算 ']
     return this.pick(constellations)
@@ -171,6 +178,10 @@ export function getServiceList (parameter) {
       productName: Random.productName(),
       productDesc: Random.productDesc(),
       discountName: Random.discountName(),
+      activityName: Random.activityName(),
+      activityStatus: Random.activityStatus(),
+      discountRate: Mock.mock('@integer(10, 100)') + '%',
+      discountName2: Random.discountName(),
       discountType: Random.discountType(),
       discountRange: Random.discountRange(),
       dashboardName: Random.dashboardName(i - 1),

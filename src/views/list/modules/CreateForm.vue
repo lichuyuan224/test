@@ -156,13 +156,13 @@ export default {
   },
   mounted() {
     if (this.$route.path === '/rb') {
-    } else if (this.$route.path === '/operations/basic-list4') {
+    } else if (this.$route.path === '/operations/basic-list4' || this.$route.path === '/my-product') {
       this.showCenter = true
       this.showRbs = true
       this.showPublished = true
       this.showNumber = true
       this.showProductType = true
-    } else if (this.$route.path === '/discountmanagement/basic-list') {
+    } else if (this.$route.path === '/discountmanagement/basic-list' || this.$route.path === '/my-discount') {
       this.showRange = true
       this.showDesc = false
       this.showSupplier = true
