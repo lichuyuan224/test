@@ -15,7 +15,7 @@
       <template v-else>
         <a-card :hoverable="true" :class="{'cc-selected': item.selected}">
           <a-card-meta>
-            <a slot="title">{{ item.title + (item.id || '') }}</a>
+            <a slot="title">{{ item.title + (item.index || '') }}</a>
             <div class="meta-content" slot="description">{{ item.des }}</div>
             <div class="cc-card" slot="description">
               <div class="label">数据中心</div>
@@ -44,7 +44,7 @@
         </a-card>
       </template>
     </a-list-item>
-    <a-modal :width="640" v-model="visible" title="新增供应商" @ok="handleOk"
+    <a-modal :width="640" v-model="visible" title="新增" @ok="handleOk"
              cancelText='取消' okText='确定'>
       <a-form :form="form" v-bind="formLayout">
         <a-form-item label="名称">
@@ -111,16 +111,16 @@ const txData = {
   selected: false
 }
 dataSource.push({})
-dataSource.push(Object.assign( {id: 1}, defaultData))
-dataSource.push(Object.assign( {id: 2}, defaultData))
-dataSource.push(Object.assign( {id: 3}, defaultData))
-dataSource.push(Object.assign({id: 1}, aliData))
-dataSource.push(Object.assign({id: 2}, aliData))
-dataSource.push(Object.assign({id: 3}, aliData))
-dataSource.push(Object.assign({id: 1}, huaweiData))
-dataSource.push(Object.assign({id: 2}, huaweiData))
-dataSource.push(Object.assign({id: 1}, txData))
-dataSource.push(Object.assign({id: 2}, txData))
+dataSource.push(Object.assign( {id: 1, index: 1}, defaultData))
+dataSource.push(Object.assign( {id: 2, index: 2}, defaultData))
+dataSource.push(Object.assign( {id: 3, index: 3}, defaultData))
+dataSource.push(Object.assign({id: 4, index: 1}, aliData))
+dataSource.push(Object.assign({id: 5, index: 2}, aliData))
+dataSource.push(Object.assign({id: 6, index: 3}, aliData))
+dataSource.push(Object.assign({id: 7, index: 1}, huaweiData))
+dataSource.push(Object.assign({id: 8, index: 2}, huaweiData))
+dataSource.push(Object.assign({id: 9, index: 1}, txData))
+dataSource.push(Object.assign({id: 10, index: 2}, txData))
 
 const fields = ['title', 'des', 'dataCenters']
 
@@ -149,6 +149,7 @@ export default {
         {},
         {
           id: 1,
+          index: 1,
           title: '阿里云',
           des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
           dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
@@ -160,6 +161,7 @@ export default {
         },
         {
           id: 2,
+          index: 2,
           title: '阿里云',
           des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
           dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
@@ -171,6 +173,7 @@ export default {
         },
         {
           id: 3,
+          index: 3,
           title: '阿里云',
           des: '说明文字：最高配置4张NVIDIA 16G显存T4计算卡，372G DDR4内存',
           dataCenters: ['和林格尔数据中心1', '和林格尔数据中心2'],
